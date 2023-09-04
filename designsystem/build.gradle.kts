@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.onlywin.design_system"
+    namespace = "com.onlywin.designsystem"
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "com.onlywin.design_system"
+        applicationId = "com.onlywin.designsystem"
         minSdk = 26
         targetSdk = 33
         versionCode = 1
