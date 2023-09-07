@@ -1,9 +1,9 @@
-package com.onlywin.designsystem
+package com.onlywin.designsystem.fondation.color
 
 import androidx.compose.runtime.Stable
 import androidx.compose.ui.graphics.Color
 
-object Color {
+object DuckColor {
 
     @Stable
     val Gray100 = Color(0xFFFFFFFF)
