@@ -4,8 +4,9 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -36,7 +37,6 @@ private fun DuckBasicButton(
 
     Box(
         modifier = modifier
-            .fillMaxWidth()
             .clip(shape)
             .background(color = if (isPressed) buttonColor.pressedColor else buttonColor.backgroundColor)
             .duckClickable(
@@ -48,6 +48,7 @@ private fun DuckBasicButton(
         contentAlignment = Alignment.Center,
     ) {
         Body1(
+            modifier = Modifier.padding(horizontal = 8.dp),
             text = text,
             color = buttonColor.textColor,
         )
@@ -82,7 +83,9 @@ fun DuckSmallButton(
     onClick: () -> Unit,
 ) {
     DuckBasicButton(
-        modifier = Modifier.height(32.dp),
+        modifier = Modifier
+            .wrapContentWidth()
+            .height(32.dp),
         text = text,
         shape = RoundedCornerShape(8.dp),
         buttonColor = if (enabled) buttonColor else DuckButtonColor.DisabledColor,

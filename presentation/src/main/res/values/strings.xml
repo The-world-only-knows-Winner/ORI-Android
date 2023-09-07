@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">ORI-Android</string>
+
+    <!--content description-->
+    <string name="content_description_icon_text_field_description">TextField Description Icon</string>
+    <string name="content_description_icon_text_field">TextField Icon</string>
+
+    <string name="content_description_icon_header_leading">Header Leading Icon</string>
+    <string name="content_description_icon_header_trailing">Header Trailing Icon</string>
 </resources>
