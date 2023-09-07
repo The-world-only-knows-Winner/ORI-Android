@@ -27,7 +27,7 @@ object DuckColor {
     val Gray700 = Color(0xFF121218)
 
     @Stable
-    val Primary100 = Color(0xFFF9F724)
+    val Primary100 = Color(0xFFF9F7E4)
 
     @Stable
     val Primary200 = Color(0xFFF1F1E0)
