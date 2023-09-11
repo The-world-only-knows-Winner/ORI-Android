@@ -13,8 +13,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.sp
+import com.onlywin.designsystem.R
 import com.onlywin.designsystem.fondation.color.DuckColor
-import com.onlywin.ori_android.R
 
 @Stable
 val maxLine = 1000

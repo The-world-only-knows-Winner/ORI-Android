@@ -1,18 +1,15 @@
 plugins {
-    id("com.android.application")
+    id("com.android.library")
     id("org.jetbrains.kotlin.android")
 }
 
 android {
-    namespace = "com.onlywin.ori_android"
+    namespace = "com.onlywin.designsystem"
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "com.onlywin.ori_android"
         minSdk = 26
         targetSdk = 33
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -50,7 +47,6 @@ android {
 }
 
 dependencies {
-    implementation(project(":designsystem"))
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")

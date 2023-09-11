@@ -26,12 +26,12 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import com.onlywin.designsystem.DuckTheme
+import com.onlywin.designsystem.R
 import com.onlywin.designsystem.clickable.duckClickable
 import com.onlywin.designsystem.fondation.color.DuckColor
 import com.onlywin.designsystem.fondation.typography.Body3
 import com.onlywin.designsystem.fondation.typography.Body4
 import com.onlywin.designsystem.fondation.typography.DuckTypography
-import com.onlywin.ori_android.R
 
 @Composable
 fun DuckBasicTextField(
