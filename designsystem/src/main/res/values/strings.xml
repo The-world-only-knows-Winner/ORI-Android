@@ -7,4 +7,6 @@
 
     <string name="content_description_icon_header_leading">Header Leading Icon</string>
     <string name="content_description_icon_header_trailing">Header Trailing Icon</string>
+
+    <string name="content_description_image_splash">Splash Image</string>
 </resources>

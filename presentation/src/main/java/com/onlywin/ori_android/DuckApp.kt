@@ -13,7 +13,7 @@ internal fun DuckApp() {
 
     NavHost(
         navController = navController,
-        startDestination = NavigationRoute.Auth.route,
+        startDestination = NavigationRoute.User.route,
     ) {
         authNavigation()
         userNavigation()
