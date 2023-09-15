@@ -1,12 +1,17 @@
-package com.onlywin.ori_android.feature.onboard
+package com.onlywin.ori_android.feature.onboarding
 
 import android.content.res.Configuration
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -14,6 +19,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import com.onlywin.designsystem.component.Indicator
 import com.onlywin.ori_android.R
 
 const val PAGE_COUNT = 3
@@ -34,15 +41,32 @@ internal fun Onboarding() {
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        HorizontalPager(
-            modifier = Modifier
-                .aspectRatio(1f),
-            state = pagerState,
-        ) {
-            Image(
-                painter = painterResource(id = onboardingDrawables[it]),
-                contentDescription = stringResource(id = R.string.content_description_image_onboarding),
-            )
+        OnboardingPager(pagerState)
+        Spacer(modifier = Modifier.height(12.dp))
+        PagerIndicator(currentPage = pagerState.currentPage)
+    }
+}
+
+@OptIn(ExperimentalFoundationApi::class)
+@Composable
+private fun OnboardingPager(pagerState: PagerState) {
+    HorizontalPager(
+        modifier = Modifier
+            .aspectRatio(1f),
+        state = pagerState,
+    ) {
+        Image(
+            painter = painterResource(id = onboardingDrawables[it]),
+            contentDescription = stringResource(id = R.string.content_description_image_onboarding),
+        )
+    }
+}
+
+@Composable
+private fun PagerIndicator(currentPage: Int) {
+    LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+        items(PAGE_COUNT) {
+            Indicator(it == currentPage)
         }
     }
 }
