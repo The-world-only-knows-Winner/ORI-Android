@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentWidth
@@ -60,11 +61,13 @@ fun DuckLargeButton(
     text: String,
     buttonColor: ButtonColor = DuckButtonColor.DefaultColor,
     enabled: Boolean = true,
-    rippleEnabled: Boolean = false,
+    rippleEnabled: Boolean = true,
     onClick: () -> Unit,
 ) {
     DuckBasicButton(
-        modifier = Modifier.height(48.dp),
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(48.dp),
         text = text,
         shape = RoundedCornerShape(12.dp),
         buttonColor = if (enabled) buttonColor else DuckButtonColor.DisabledColor,
