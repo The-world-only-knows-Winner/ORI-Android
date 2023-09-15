@@ -16,6 +16,9 @@ internal fun DuckApp() {
         startDestination = NavigationRoute.User.route,
     ) {
         authNavigation()
-        userNavigation()
+        userNavigation(
+            moveToSignUp = { },
+            moveToSignIn = { },
+        )
     }
 }

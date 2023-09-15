@@ -2,11 +2,14 @@
     <string name="app_name">designsystem</string>
 
     <!--content description-->
-    <string name="content_description_icon_text_field_description">TextField Description Icon</string>
+    <string name="content_description_icon_text_field_description">TextField description icon</string>
 
-    <string name="content_description_icon_header_leading">Header Leading Icon</string>
-    <string name="content_description_icon_header_trailing">Header Trailing Icon</string>
+    <string name="content_description_icon_header_leading">Header leading icon</string>
+    <string name="content_description_icon_header_trailing">Header trailing icon</string>
 
-    <string name="content_description_icon_text_field">TextField Icon</string>
+    <string name="content_description_icon_text_field">TextField icon</string>
 
+    <!--animation label-->
+    <string name="animation_label_indicator_width">Indicator animated width</string>
+    <string name="animation_label_indicator_background_color">Indicator animated background color</string>
 </resources>
