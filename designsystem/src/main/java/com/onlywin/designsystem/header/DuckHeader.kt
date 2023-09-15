@@ -15,10 +15,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.onlywin.designsystem.DuckTheme
+import com.onlywin.designsystem.R
 import com.onlywin.designsystem.clickable.duckClickable
 import com.onlywin.designsystem.fondation.typography.Body1
 import com.onlywin.designsystem.fondation.typography.Heading1
-import com.onlywin.ori_android.R
 
 @Composable
 internal fun DuckHeader(
