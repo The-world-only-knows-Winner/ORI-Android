@@ -4,7 +4,8 @@
     <!--content description-->
     <string name="content_description_image_splash">Splash Image</string>
 
+    <string name="content_description_image_onboarding">Onboarding Image</string>
+
     <!--splash-->
     <string name="splash_image_description">당신만의 대중교통 알림 서비스</string>
-
 </resources>
