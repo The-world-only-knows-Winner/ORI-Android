@@ -63,4 +63,3 @@ private fun LightThemeSplashPreview() {
 private fun DarkThemeSplashPreview() {
     Splash()
 }
-

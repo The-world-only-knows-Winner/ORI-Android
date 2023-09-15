@@ -1,10 +1,11 @@
 package com.onlywin.ori_android.navigation
 
 sealed class NavigationRoute(val route: String) {
-    object Auth: NavigationRoute(route = "Auth") {
+    object Auth : NavigationRoute(route = "Auth") {
         const val SignIn = "signIn"
     }
-    object User: NavigationRoute(route = "User"){
+
+    object User : NavigationRoute(route = "User") {
         const val Splash = "splash"
     }
 }
