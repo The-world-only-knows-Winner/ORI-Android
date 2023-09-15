@@ -58,7 +58,7 @@ private fun DuckBasicButton(
 @Composable
 fun DuckLargeButton(
     text: String,
-    buttonColor: ButtonColor,
+    buttonColor: ButtonColor = DuckButtonColor.DefaultColor,
     enabled: Boolean = true,
     rippleEnabled: Boolean = false,
     onClick: () -> Unit,
@@ -77,7 +77,7 @@ fun DuckLargeButton(
 @Composable
 fun DuckSmallButton(
     text: String,
-    buttonColor: ButtonColor,
+    buttonColor: ButtonColor = DuckButtonColor.DefaultColor,
     enabled: Boolean = true,
     rippleEnabled: Boolean = false,
     onClick: () -> Unit,
