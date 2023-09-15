@@ -14,6 +14,7 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.sp
 import com.onlywin.designsystem.R
+import com.onlywin.designsystem.clickable.duckClickable
 import com.onlywin.designsystem.fondation.color.DuckColor
 
 @Stable
@@ -106,12 +107,18 @@ fun Heading1(
     modifier: Modifier = Modifier,
     color: Color = DuckColor.Gray700,
     text: String,
+    onClick: (() -> Unit)? = null,
     decoration: TextDecoration = TextDecoration.None,
     overflow: TextOverflow = TextOverflow.Ellipsis,
     maxLines: Int = maxLine,
+    enabled: Boolean = true,
 ) {
     Text(
-        modifier = modifier,
+        modifier = modifier.duckClickable(
+            rippleEnabled = false,
+            enabled = enabled,
+            onClick = { onClick?.invoke() },
+        ),
         color = color,
         text = text,
         fontFamily = suitFamily,
@@ -127,12 +134,18 @@ fun Heading2(
     modifier: Modifier = Modifier,
     color: Color = DuckColor.Gray700,
     text: String,
+    onClick: (() -> Unit)? = null,
     decoration: TextDecoration = TextDecoration.None,
     overflow: TextOverflow = TextOverflow.Ellipsis,
     maxLines: Int = maxLine,
+    enabled: Boolean = true,
 ) {
     Text(
-        modifier = modifier,
+        modifier = modifier.duckClickable(
+            rippleEnabled = false,
+            enabled = enabled,
+            onClick = { onClick?.invoke() },
+        ),
         color = color,
         text = text,
         fontFamily = suitFamily,
@@ -148,12 +161,18 @@ fun Heading3(
     modifier: Modifier = Modifier,
     color: Color = DuckColor.Gray700,
     text: String,
+    onClick: (() -> Unit)? = null,
     decoration: TextDecoration = TextDecoration.None,
     overflow: TextOverflow = TextOverflow.Ellipsis,
     maxLines: Int = maxLine,
+    enabled: Boolean = true,
 ) {
     Text(
-        modifier = modifier,
+        modifier = modifier.duckClickable(
+            rippleEnabled = false,
+            enabled = enabled,
+            onClick = { onClick?.invoke() },
+        ),
         color = color,
         text = text,
         fontFamily = suitFamily,
@@ -169,12 +188,18 @@ fun Body1(
     modifier: Modifier = Modifier,
     color: Color = DuckColor.Gray700,
     text: String,
+    onClick: (() -> Unit)? = null,
     decoration: TextDecoration = TextDecoration.None,
     overflow: TextOverflow = TextOverflow.Ellipsis,
     maxLines: Int = maxLine,
+    enabled: Boolean = true,
 ) {
     Text(
-        modifier = modifier,
+        modifier = modifier.duckClickable(
+            rippleEnabled = false,
+            enabled = enabled,
+            onClick = { onClick?.invoke() },
+        ),
         color = color,
         text = text,
         fontFamily = suitFamily,
@@ -190,12 +215,18 @@ fun Body2(
     modifier: Modifier = Modifier,
     color: Color = DuckColor.Gray700,
     text: String,
+    onClick: (() -> Unit)? = null,
     decoration: TextDecoration = TextDecoration.None,
     overflow: TextOverflow = TextOverflow.Ellipsis,
     maxLines: Int = maxLine,
+    enabled: Boolean,
 ) {
     Text(
-        modifier = modifier,
+        modifier = modifier.duckClickable(
+            rippleEnabled = false,
+            enabled = enabled,
+            onClick = { onClick?.invoke() },
+        ),
         color = color,
         text = text,
         fontFamily = suitFamily,
@@ -211,12 +242,18 @@ fun Body3(
     modifier: Modifier = Modifier,
     color: Color = DuckColor.Gray700,
     text: String,
+    onClick: (() -> Unit)? = null,
     decoration: TextDecoration = TextDecoration.None,
     overflow: TextOverflow = TextOverflow.Ellipsis,
     maxLines: Int = maxLine,
+    enabled: Boolean = true,
 ) {
     Text(
-        modifier = modifier,
+        modifier = modifier.duckClickable(
+            rippleEnabled = false,
+            enabled = enabled,
+            onClick = { onClick?.invoke() },
+        ),
         color = color,
         text = text,
         fontFamily = suitFamily,
@@ -232,12 +269,18 @@ fun Body4(
     modifier: Modifier = Modifier,
     color: Color = DuckColor.Gray700,
     text: String,
+    onClick: (() -> Unit)? = null,
     decoration: TextDecoration = TextDecoration.None,
     overflow: TextOverflow = TextOverflow.Ellipsis,
     maxLines: Int = maxLine,
+    enabled: Boolean = true,
 ) {
     Text(
-        modifier = modifier,
+        modifier = modifier.duckClickable(
+            rippleEnabled = false,
+            enabled = enabled,
+            onClick = { onClick?.invoke() },
+        ),
         color = color,
         text = text,
         fontFamily = suitFamily,
