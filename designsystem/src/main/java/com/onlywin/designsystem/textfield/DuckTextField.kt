@@ -34,7 +34,7 @@ import com.onlywin.designsystem.fondation.typography.Body4
 import com.onlywin.designsystem.fondation.typography.DuckTypography
 
 @Composable
-fun DuckBasicTextField(
+fun DuckTextField(
     title: String? = null,
     titleColor: Color = DuckTheme.colors.background,
     description: String? = null,
