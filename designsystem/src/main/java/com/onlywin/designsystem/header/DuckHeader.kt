@@ -34,7 +34,6 @@ fun DuckHeader(
     Column {
         Row(
             modifier = Modifier.padding(
-                horizontal = 20.dp,
                 vertical = 10.dp
             ),
             verticalAlignment = Alignment.CenterVertically,
@@ -65,7 +64,6 @@ fun DuckHeader(
         if (pageTitle != null) {
             Spacer(modifier = Modifier.height(24.dp))
             Heading1(
-                modifier = Modifier.padding(horizontal = 20.dp),
                 text = pageTitle,
                 color = pageTitleColor,
             )
