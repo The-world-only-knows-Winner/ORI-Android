@@ -21,15 +21,15 @@ import com.onlywin.designsystem.fondation.typography.Body1
 import com.onlywin.designsystem.fondation.typography.Heading1
 
 @Composable
-internal fun DuckHeader(
+fun DuckHeader(
     @DrawableRes leadingIcon: Int? = null,
     @DrawableRes trailingIcon: Int? = null,
     leadingOnClick: (() -> Unit)? = null,
     trailingOnClick: (() -> Unit)? = null,
     headerTitle: String? = null,
-    headerTitleColor: Color = DuckTheme.colors.background,
+    headerTitleColor: Color = DuckTheme.colors.onBackground,
     pageTitle: String? = null,
-    pageTitleColor: Color = DuckTheme.colors.background,
+    pageTitleColor: Color = DuckTheme.colors.onBackground,
 ) {
     Column {
         Row(
