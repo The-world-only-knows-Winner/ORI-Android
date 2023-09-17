@@ -2,6 +2,7 @@ package com.onlywin.designsystem.component
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
@@ -15,6 +16,8 @@ import androidx.compose.ui.unit.dp
 import com.onlywin.designsystem.DuckTheme
 import com.onlywin.designsystem.R
 
+private const val DURATION = 500
+
 @Composable
 fun Indicator(isEnabled: Boolean) {
 
@@ -22,12 +25,14 @@ fun Indicator(isEnabled: Boolean) {
         targetValue = if (isEnabled) 24.dp
         else 8.dp,
         label = stringResource(id = R.string.animation_label_indicator_width),
+        animationSpec = tween(DURATION)
     )
 
     val backgroundColor by animateColorAsState(
         targetValue = if (isEnabled) DuckTheme.colors.primary
         else DuckTheme.colors.surface,
-        label = stringResource(id = R.string.animation_label_indicator_background_color)
+        label = stringResource(id = R.string.animation_label_indicator_background_color),
+        animationSpec = tween(DURATION)
     )
 
     Box(
