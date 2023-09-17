@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
@@ -15,14 +14,15 @@ import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.onlywin.designsystem.DuckTheme
 import com.onlywin.designsystem.button.DuckLargeButton
+import com.onlywin.designsystem.component.DuckLayout
 import com.onlywin.designsystem.component.Indicator
 import com.onlywin.designsystem.fondation.typography.Body3
 import com.onlywin.designsystem.fondation.typography.Body4
@@ -57,13 +57,9 @@ internal fun Onboarding(
     moveToSignUp: () -> Unit,
     moveToSignIn: () -> Unit,
 ) {
-
     val pagerState = rememberPagerState(pageCount = { PAGE_COUNT })
 
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-    ) {
+    DuckLayout {
         OnboardingPager(pagerState)
         Spacer(modifier = Modifier.height(12.dp))
         PagerIndicator(currentPage = pagerState.currentPage)
@@ -84,7 +80,6 @@ internal fun Onboarding(
             decoration = TextDecoration.Underline,
             onClick = moveToSignIn,
         )
-        Spacer(modifier = Modifier.height(16.dp))
     }
 }
 
@@ -118,8 +113,10 @@ private fun PagerIndicator(currentPage: Int) {
 )
 @Composable
 private fun LightThemeOnboardingPreview() {
-    Onboarding(moveToSignUp = { /*TODO*/ }) {
-        
+    DuckTheme {
+        Onboarding(moveToSignUp = { /*TODO*/ }) {
+
+        }
     }
 }
 
@@ -130,7 +127,9 @@ private fun LightThemeOnboardingPreview() {
 )
 @Composable
 private fun DarkThemeOnboardingPreview() {
-    Onboarding(moveToSignUp = { /*TODO*/ }) {
-        
+    DuckTheme {
+        Onboarding(moveToSignUp = { /*TODO*/ }) {
+
+        }
     }
 }

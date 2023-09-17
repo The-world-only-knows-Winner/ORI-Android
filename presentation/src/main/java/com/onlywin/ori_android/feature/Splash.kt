@@ -61,7 +61,9 @@ internal fun Splash(
 )
 @Composable
 private fun LightThemeSplashPreview() {
-    Splash {}
+    DuckTheme {
+        Splash {}
+    }
 }
 
 @Preview(
@@ -71,5 +73,7 @@ private fun LightThemeSplashPreview() {
 )
 @Composable
 private fun DarkThemeSplashPreview() {
-    Splash {}
+    DuckTheme {
+        Splash {}
+    }
 }

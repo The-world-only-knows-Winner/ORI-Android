@@ -2,6 +2,7 @@ package com.onlywin.designsystem.header
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -21,6 +22,18 @@ import com.onlywin.designsystem.fondation.typography.Body1
 import com.onlywin.designsystem.fondation.typography.Heading1
 
 @Composable
+fun DuckAuthHeader(
+    pageTitle: String,
+    leadingOnClick: (() -> Unit),
+) {
+    DuckHeader(
+        leadingIcon = R.drawable.ic_arrow_back,
+        pageTitle = pageTitle,
+        leadingOnClick = leadingOnClick,
+    )
+}
+
+@Composable
 fun DuckHeader(
     @DrawableRes leadingIcon: Int? = null,
     @DrawableRes trailingIcon: Int? = null,
@@ -33,9 +46,7 @@ fun DuckHeader(
 ) {
     Column {
         Row(
-            modifier = Modifier.padding(
-                vertical = 10.dp
-            ),
+            modifier = Modifier.padding(vertical = 8.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
             if (leadingIcon != null) {
@@ -62,11 +73,12 @@ fun DuckHeader(
             }
         }
         if (pageTitle != null) {
-            Spacer(modifier = Modifier.height(36.dp))
-            Heading1(
-                text = pageTitle,
-                color = pageTitleColor,
-            )
+            Box(modifier = Modifier.padding(vertical = 24.dp)) {
+                Heading1(
+                    text = pageTitle,
+                    color = pageTitleColor,
+                )
+            }
         }
     }
 }

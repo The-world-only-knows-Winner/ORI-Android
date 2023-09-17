@@ -16,11 +16,14 @@ internal fun DuckApp() {
         startDestination = NavigationRoute.User.route,
     ) {
         authNavigation(
-            moveToOnboarding = { navController.popBackStack() }
+            moveToOnboarding = { navController.popBackStack() },
+            moveToSignUpUser = { navController.navigate(NavigationRoute.Auth.SignUpUser) },
+            moveToSignUpAccount = { navController.popBackStack() },
+            moveToComplete = { navController.navigate(NavigationRoute.Auth.SignUpComplete) }
         )
         userNavigation(
             moveToOnboarding = { navController.navigate(NavigationRoute.User.Onboarding) },
-            moveToSignUp = { },
+            moveToSignUp = { navController.navigate(NavigationRoute.Auth.SignUpAccount) },
             moveToSignIn = { navController.navigate(NavigationRoute.Auth.SignIn) },
         )
     }
