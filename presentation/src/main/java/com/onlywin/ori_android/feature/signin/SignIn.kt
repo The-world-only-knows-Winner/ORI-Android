@@ -14,6 +14,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.onlywin.designsystem.button.DuckLargeButton
 import com.onlywin.designsystem.component.DuckLayout
+import com.onlywin.designsystem.header.DuckAuthHeader
 import com.onlywin.designsystem.header.DuckHeader
 import com.onlywin.designsystem.textfield.DuckTextField
 import com.onlywin.ori_android.R
@@ -41,8 +42,7 @@ internal fun SignIn(
 
     DuckLayout(horizontal = 20.dp) {
         Spacer(modifier = Modifier.height(12.dp))
-        DuckHeader(
-            leadingIcon = com.onlywin.designsystem.R.drawable.ic_arrow_back,
+        DuckAuthHeader(
             pageTitle = stringResource(id = R.string.sign_in_welcome),
             leadingOnClick = moveToOnboarding,
         )

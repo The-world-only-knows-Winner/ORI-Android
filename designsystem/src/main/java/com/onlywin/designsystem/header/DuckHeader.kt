@@ -21,6 +21,18 @@ import com.onlywin.designsystem.fondation.typography.Body1
 import com.onlywin.designsystem.fondation.typography.Heading1
 
 @Composable
+fun DuckAuthHeader(
+    pageTitle: String,
+    leadingOnClick: (() -> Unit),
+) {
+    DuckHeader(
+        leadingIcon = R.drawable.ic_arrow_back,
+        pageTitle = pageTitle,
+        leadingOnClick = leadingOnClick,
+    )
+}
+
+@Composable
 fun DuckHeader(
     @DrawableRes leadingIcon: Int? = null,
     @DrawableRes trailingIcon: Int? = null,
