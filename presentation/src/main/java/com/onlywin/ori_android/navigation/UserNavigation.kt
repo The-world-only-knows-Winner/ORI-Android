@@ -5,6 +5,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.onlywin.ori_android.feature.Splash
 import com.onlywin.ori_android.feature.onboarding.Onboarding
+import com.onlywin.ori_android.feature.signup.SignUp
 
 internal fun NavGraphBuilder.userNavigation(
     moveToOnboarding: () -> Unit,
@@ -26,5 +27,10 @@ internal fun NavGraphBuilder.userNavigation(
             )
         }
 
+        composable(NavigationRoute.User.SignUp) {
+            SignUp(
+                moveToOnboarding = moveToOnboarding,
+            )
+        }
     }
 }

@@ -4,9 +4,17 @@
     <!--global-->
     <string name="email">이메일</string>
     <string name="password">비밀번호</string>
+    <string name="verify_code">인증 코드</string>
+
+    <string name="resend">재전송</string>
+    <string name="next">다음</string>
+
+    <!--description-->
 
     <string name="please_enter_content">내용을 입력해주세요.</string>
     <string name="password_mismatch">잘못된 비밀번호에요.</string>
+
+    <string name="email_sent">인증 메일이 발송되었어요.</string>
 
     <!--content description-->
     <string name="content_description_image_splash">Splash Image</string>
@@ -32,4 +40,10 @@
     <!--sign in-->
     <string name="sign_in_welcome">다시 오신걸 환영해요!</string>
     <string name="sign_in_start">시작하기</string>
+
+    <!--sign up-->
+    <string name="sign_up_please_enter_email">이메일 입력 후 인증해주세요</string>
+    <string name="sign_up_please_enter_password">비밀번호를 입력해주세요</string>
+    <string name="sign_up_please_enter_name">이름을 알려주세요</string>
+    <string name="sign_up_please_enter_birth">생년월일을 알려주세요</string>
 </resources>

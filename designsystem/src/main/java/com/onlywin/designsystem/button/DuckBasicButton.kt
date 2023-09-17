@@ -52,6 +52,7 @@ private fun DuckBasicButton(
             modifier = Modifier.padding(horizontal = 8.dp),
             text = text,
             color = buttonColor.textColor,
+            onClick = onClick,
         )
     }
 }
@@ -82,7 +83,7 @@ fun DuckSmallButton(
     text: String,
     buttonColor: ButtonColor = DuckButtonColor.DefaultColor,
     enabled: Boolean = true,
-    rippleEnabled: Boolean = false,
+    rippleEnabled: Boolean = true,
     onClick: () -> Unit,
 ) {
     DuckBasicButton(
