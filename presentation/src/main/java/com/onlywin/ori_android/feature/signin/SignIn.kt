@@ -46,7 +46,6 @@ internal fun SignIn(
             pageTitle = stringResource(id = R.string.sign_in_welcome),
             leadingOnClick = moveToOnboarding,
         )
-        Spacer(modifier = Modifier.height(40.dp))
         SignInInput(
             email = email,
             onEmailChange = onEmailChange,
