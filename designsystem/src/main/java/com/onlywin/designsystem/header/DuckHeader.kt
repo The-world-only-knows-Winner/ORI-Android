@@ -62,7 +62,7 @@ fun DuckHeader(
             }
         }
         if (pageTitle != null) {
-            Spacer(modifier = Modifier.height(24.dp))
+            Spacer(modifier = Modifier.height(36.dp))
             Heading1(
                 text = pageTitle,
                 color = pageTitleColor,
