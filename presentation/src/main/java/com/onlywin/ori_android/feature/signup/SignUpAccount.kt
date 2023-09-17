@@ -1,7 +1,6 @@
 package com.onlywin.ori_android.feature.signup
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
-import android.util.Log
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -24,17 +23,16 @@ import com.onlywin.designsystem.fondation.color.DuckButtonColor
 import com.onlywin.designsystem.header.DuckAuthHeader
 import com.onlywin.designsystem.textfield.DuckTextField
 import com.onlywin.ori_android.R
-import kotlinx.coroutines.runBlocking
 
 private val pageTitles = listOf(
-    R.string.sign_up_please_enter_email,
-    R.string.sign_up_please_enter_password,
-    R.string.sign_up_please_enter_name,
-    R.string.sign_up_please_enter_birth,
+    R.string.sign_up_account_please_enter_email,
+    R.string.sign_up_account_please_enter_password,
+    R.string.sign_up_account_please_enter_name,
+    R.string.sign_up_account_please_enter_birth,
 )
 
 @Composable
-internal fun SignUp(
+internal fun SignUpAccount(
     moveToOnboarding: () -> Unit,
 ) {
 
@@ -66,7 +64,7 @@ internal fun SignUp(
             pageTitle = stringResource(id = pageTitles[currentStep]),
             leadingOnClick = moveToOnboarding,
         )
-        SignUpInput(
+        SignUpAccountInput(
             email = email,
             onEmailChange = onEmailChange,
             resendVerifyCode = resendVerifyCode,
@@ -86,7 +84,7 @@ internal fun SignUp(
 }
 
 @Composable
-private fun SignUpInput(
+private fun SignUpAccountInput(
     email: String,
     onEmailChange: (String) -> Unit,
     resendVerifyCode: () -> Unit,
@@ -128,27 +126,27 @@ private fun SignUpInput(
 }
 
 @Preview(
-    name = "SignUp Light Preview",
+    name = "SignAccountUp Light Preview",
     showBackground = true,
 )
 @Composable
-private fun SignUpLightPreview() {
+private fun SignUpAccountLightPreview() {
     DuckTheme {
-        SignUp {
+        SignUpAccount {
 
         }
     }
 }
 
 @Preview(
-    name = "SignUp Dark Preview",
+    name = "SignAccountUp Dark Preview",
     showBackground = true,
     uiMode = UI_MODE_NIGHT_YES,
 )
 @Composable
-private fun SignUpDarkPreview() {
+private fun SignUpAccountDarkPreview() {
     DuckTheme {
-        SignUp {
+        SignUpAccount {
 
         }
     }

@@ -41,9 +41,9 @@
     <string name="sign_in_welcome">다시 오신걸 환영해요!</string>
     <string name="sign_in_start">시작하기</string>
 
-    <!--sign up-->
-    <string name="sign_up_please_enter_email">이메일 입력 후 인증해주세요</string>
-    <string name="sign_up_please_enter_password">비밀번호를 입력해주세요</string>
-    <string name="sign_up_please_enter_name">이름을 알려주세요</string>
-    <string name="sign_up_please_enter_birth">생년월일을 알려주세요</string>
+    <!--sign up account-->
+    <string name="sign_up_account_please_enter_email">이메일 입력 후 인증해주세요</string>
+    <string name="sign_up_account_please_enter_password">비밀번호를 입력해주세요</string>
+    <string name="sign_up_account_please_enter_name">이름을 알려주세요</string>
+    <string name="sign_up_account_please_enter_birth">생년월일을 알려주세요</string>
 </resources>
