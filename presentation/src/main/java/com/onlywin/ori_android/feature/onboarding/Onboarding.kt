@@ -80,7 +80,6 @@ internal fun Onboarding(
             decoration = TextDecoration.Underline,
             onClick = moveToSignIn,
         )
-        Spacer(modifier = Modifier.height(16.dp))
     }
 }
 

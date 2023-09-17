@@ -1,9 +1,12 @@
 package com.onlywin.designsystem.component
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.runtime.Composable
@@ -18,6 +21,8 @@ import com.onlywin.designsystem.clickable.duckClickable
 @Composable
 fun DuckLayout(
     horizontal: Dp = 0.dp,
+    horizontalAlignment: Alignment.Horizontal = Alignment.CenterHorizontally,
+    verticalArrangement: Arrangement.Vertical = Arrangement.Top,
     content: @Composable ColumnScope.() -> Unit,
 ) {
 
@@ -30,8 +35,10 @@ fun DuckLayout(
             .duckClickable { focusManager.clearFocus() }
             .background(DuckTheme.colors.background)
             .padding(horizontal = horizontal),
-        horizontalAlignment = Alignment.CenterHorizontally,
+        horizontalAlignment = horizontalAlignment,
+        verticalArrangement = verticalArrangement
     ) {
         content()
+        Spacer(modifier = Modifier.height(16.dp))
     }
 }

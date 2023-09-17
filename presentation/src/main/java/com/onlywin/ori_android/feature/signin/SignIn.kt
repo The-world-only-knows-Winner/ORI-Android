@@ -60,7 +60,6 @@ internal fun SignIn(
             text = stringResource(id = R.string.sign_in_start),
             onClick = signIn,
         )
-        Spacer(modifier = Modifier.height(16.dp))
     }
 }
 
