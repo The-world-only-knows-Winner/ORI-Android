@@ -9,6 +9,7 @@ import com.onlywin.ori_android.feature.signup.SignUpUser
 
 internal fun NavGraphBuilder.authNavigation(
     moveToOnboarding: () -> Unit,
+    moveToSignUpUser: () -> Unit,
     moveToSignUpAccount: () -> Unit,
 ) {
     navigation(
@@ -21,13 +22,14 @@ internal fun NavGraphBuilder.authNavigation(
             )
         }
 
-        composable(NavigationRoute.User.SignUpAccount) {
+        composable(NavigationRoute.Auth.SignUpAccount) {
             SignUpAccount(
                 moveToOnboarding = moveToOnboarding,
+                moveToSignUpUser = moveToSignUpUser,
             )
         }
 
-        composable(NavigationRoute.User.SignUpUser){
+        composable(NavigationRoute.Auth.SignUpUser){
             SignUpUser(
                 moveToSignUpAccount = moveToSignUpAccount,
             )

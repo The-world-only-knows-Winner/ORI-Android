@@ -26,14 +26,14 @@ import com.onlywin.ori_android.R
 
 private val pageTitles = listOf(
     R.string.sign_up_account_please_enter_email,
+    R.string.sign_up_account_please_enter_email,
     R.string.sign_up_account_please_enter_password,
-    R.string.sign_up_account_please_enter_name,
-    R.string.sign_up_account_please_enter_birth,
 )
 
 @Composable
 internal fun SignUpAccount(
     moveToOnboarding: () -> Unit,
+    moveToSignUpUser: () -> Unit,
 ) {
 
     var email by remember { mutableStateOf("") }
@@ -56,7 +56,12 @@ internal fun SignUpAccount(
 
     var currentStep by remember { mutableIntStateOf(0) }
 
-    val moveToNextStep = { currentStep += 1 }
+    val moveToNextStep = { 
+        when(currentStep){
+            in 0..1 -> currentStep += 1
+            else -> moveToSignUpUser()
+        }
+    }
 
     DuckLayout(horizontal = 20.dp) {
         Spacer(modifier = Modifier.height(12.dp))
@@ -132,8 +137,8 @@ private fun SignUpAccountInput(
 @Composable
 private fun SignUpAccountLightPreview() {
     DuckTheme {
-        SignUpAccount {
-
+        SignUpAccount(moveToOnboarding = { /*TODO*/ }) {
+            
         }
     }
 }
@@ -146,8 +151,8 @@ private fun SignUpAccountLightPreview() {
 @Composable
 private fun SignUpAccountDarkPreview() {
     DuckTheme {
-        SignUpAccount {
-
+        SignUpAccount(moveToOnboarding = { /*TODO*/ }) {
+            
         }
     }
 }

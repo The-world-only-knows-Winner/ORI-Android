@@ -2,6 +2,7 @@ package com.onlywin.ori_android.feature.signup
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
@@ -45,7 +46,7 @@ internal fun SignUpUser(
 
     val moveToNextStep = { currentStep += 1 }
 
-    val buttonText = when(currentStep){
+    val buttonText = when (currentStep) {
         0 -> stringResource(id = R.string.next)
         else -> stringResource(id = R.string.complete)
     }
@@ -80,18 +81,20 @@ private fun SignUpUserInputs(
     onNameChange: (String) -> Unit,
     currentStep: Int,
 ) {
-    AnimatedVisibility(currentStep >= 1) {
+    Column {
+        AnimatedVisibility(currentStep >= 1) {
+            DuckTextField(
+                value = birth,
+                onValueChange = onBirthChange,
+                title = stringResource(id = R.string.birth),
+            )
+        }
         DuckTextField(
-            value = birth,
-            onValueChange = onBirthChange,
-            title = stringResource(id = R.string.birth),
+            value = name,
+            onValueChange = onNameChange,
+            title = stringResource(id = R.string.name),
         )
     }
-    DuckTextField(
-        value = name,
-        onValueChange = onNameChange,
-        title = stringResource(id = R.string.name),
-    )
 }
 
 @Preview(
