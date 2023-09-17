@@ -60,6 +60,7 @@ fun DuckTextField(
                 title = title,
                 titleColor = titleColor,
             )
+            Spacer(modifier = Modifier.height(12.dp))
             Row {
                 Column(
                     modifier = Modifier

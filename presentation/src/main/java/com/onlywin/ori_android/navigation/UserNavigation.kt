@@ -7,15 +7,16 @@ import com.onlywin.ori_android.feature.Splash
 import com.onlywin.ori_android.feature.onboarding.Onboarding
 
 internal fun NavGraphBuilder.userNavigation(
+    moveToOnboarding: () -> Unit,
     moveToSignUp: () -> Unit,
     moveToSignIn: () -> Unit,
 ) {
     navigation(
         route = NavigationRoute.User.route,
-        startDestination = NavigationRoute.User.Onboarding,
+        startDestination = NavigationRoute.User.Splash,
     ) {
         composable(NavigationRoute.User.Splash) {
-            Splash()
+            Splash(moveToOnboarding = moveToOnboarding)
         }
 
         composable(NavigationRoute.User.Onboarding) {

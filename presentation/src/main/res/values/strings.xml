@@ -5,6 +5,9 @@
     <string name="email">이메일</string>
     <string name="password">비밀번호</string>
 
+    <string name="please_enter_content">내용을 입력해주세요.</string>
+    <string name="password_mismatch">잘못된 비밀번호에요.</string>
+
     <!--content description-->
     <string name="content_description_image_splash">Splash Image</string>
 
