@@ -13,6 +13,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.sp
+import com.onlywin.designsystem.DuckTheme
 import com.onlywin.designsystem.R
 import com.onlywin.designsystem.clickable.duckClickable
 import com.onlywin.designsystem.fondation.color.DuckColor
@@ -105,7 +106,7 @@ object DuckTypography {
 @Composable
 fun Heading1(
     modifier: Modifier = Modifier,
-    color: Color = DuckColor.Gray700,
+    color: Color = DuckTheme.colors.onBackground,
     text: String,
     onClick: (() -> Unit)? = null,
     decoration: TextDecoration = TextDecoration.None,
@@ -132,7 +133,7 @@ fun Heading1(
 @Composable
 fun Heading2(
     modifier: Modifier = Modifier,
-    color: Color = DuckColor.Gray700,
+    color: Color = DuckTheme.colors.onBackground,
     text: String,
     onClick: (() -> Unit)? = null,
     decoration: TextDecoration = TextDecoration.None,
@@ -159,7 +160,7 @@ fun Heading2(
 @Composable
 fun Heading3(
     modifier: Modifier = Modifier,
-    color: Color = DuckColor.Gray700,
+    color: Color = DuckTheme.colors.onBackground,
     text: String,
     onClick: (() -> Unit)? = null,
     decoration: TextDecoration = TextDecoration.None,
@@ -186,7 +187,7 @@ fun Heading3(
 @Composable
 fun Body1(
     modifier: Modifier = Modifier,
-    color: Color = DuckColor.Gray700,
+    color: Color = DuckTheme.colors.onBackground,
     text: String,
     onClick: (() -> Unit)? = null,
     decoration: TextDecoration = TextDecoration.None,
@@ -213,7 +214,7 @@ fun Body1(
 @Composable
 fun Body2(
     modifier: Modifier = Modifier,
-    color: Color = DuckColor.Gray700,
+    color: Color = DuckTheme.colors.onBackground,
     text: String,
     onClick: (() -> Unit)? = null,
     decoration: TextDecoration = TextDecoration.None,
@@ -240,7 +241,7 @@ fun Body2(
 @Composable
 fun Body3(
     modifier: Modifier = Modifier,
-    color: Color = DuckColor.Gray700,
+    color: Color = DuckTheme.colors.onBackground,
     text: String,
     onClick: (() -> Unit)? = null,
     decoration: TextDecoration = TextDecoration.None,
@@ -267,7 +268,7 @@ fun Body3(
 @Composable
 fun Body4(
     modifier: Modifier = Modifier,
-    color: Color = DuckColor.Gray700,
+    color: Color = DuckTheme.colors.onBackground,
     text: String,
     onClick: (() -> Unit)? = null,
     decoration: TextDecoration = TextDecoration.None,

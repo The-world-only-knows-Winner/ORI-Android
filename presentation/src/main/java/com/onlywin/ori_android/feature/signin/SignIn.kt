@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.onlywin.designsystem.DuckTheme
 import com.onlywin.designsystem.button.DuckLargeButton
 import com.onlywin.designsystem.component.DuckLayout
 import com.onlywin.designsystem.header.DuckAuthHeader
@@ -95,7 +96,9 @@ private fun SignInInput(
 )
 @Composable
 private fun SignInLightPreview() {
-    SignIn {}
+    DuckTheme {
+        SignIn {}
+    }
 }
 
 @Preview(
@@ -105,5 +108,7 @@ private fun SignInLightPreview() {
 )
 @Composable
 private fun SignInDarkPreview() {
-    SignIn {}
+    DuckTheme {
+        SignIn {}
+    }
 }

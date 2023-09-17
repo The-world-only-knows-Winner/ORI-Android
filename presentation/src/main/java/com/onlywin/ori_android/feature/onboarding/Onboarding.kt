@@ -20,6 +20,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.onlywin.designsystem.DuckTheme
 import com.onlywin.designsystem.button.DuckLargeButton
 import com.onlywin.designsystem.component.DuckLayout
 import com.onlywin.designsystem.component.Indicator
@@ -113,8 +114,10 @@ private fun PagerIndicator(currentPage: Int) {
 )
 @Composable
 private fun LightThemeOnboardingPreview() {
-    Onboarding(moveToSignUp = { /*TODO*/ }) {
+    DuckTheme {
+        Onboarding(moveToSignUp = { /*TODO*/ }) {
 
+        }
     }
 }
 
@@ -125,7 +128,9 @@ private fun LightThemeOnboardingPreview() {
 )
 @Composable
 private fun DarkThemeOnboardingPreview() {
-    Onboarding(moveToSignUp = { /*TODO*/ }) {
+    DuckTheme {
+        Onboarding(moveToSignUp = { /*TODO*/ }) {
 
+        }
     }
 }
