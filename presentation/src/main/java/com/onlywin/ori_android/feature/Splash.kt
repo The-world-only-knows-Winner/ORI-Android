@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -19,9 +20,18 @@ import androidx.compose.ui.unit.dp
 import com.onlywin.designsystem.DuckTheme
 import com.onlywin.designsystem.fondation.typography.Heading3
 import com.onlywin.ori_android.R
+import kotlinx.coroutines.delay
 
 @Composable
-internal fun Splash() {
+internal fun Splash(
+    moveToOnboarding: () -> Unit,
+) {
+    // TODO auto sign in logic
+    LaunchedEffect(Unit) {
+        delay(2000)
+        moveToOnboarding()
+    }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -51,7 +61,7 @@ internal fun Splash() {
 )
 @Composable
 private fun LightThemeSplashPreview() {
-    Splash()
+    Splash {}
 }
 
 @Preview(
@@ -61,5 +71,5 @@ private fun LightThemeSplashPreview() {
 )
 @Composable
 private fun DarkThemeSplashPreview() {
-    Splash()
+    Splash {}
 }

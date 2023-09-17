@@ -1,6 +1,7 @@
 package com.onlywin.designsystem.textfield
 
 import androidx.annotation.DrawableRes
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -8,6 +9,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.text.BasicTextField
@@ -34,11 +36,11 @@ import com.onlywin.designsystem.fondation.typography.Body4
 import com.onlywin.designsystem.fondation.typography.DuckTypography
 
 @Composable
-fun DuckBasicTextField(
+fun DuckTextField(
     title: String? = null,
-    titleColor: Color = DuckTheme.colors.background,
+    titleColor: Color = DuckTheme.colors.onBackground,
     description: String? = null,
-    descriptionColor: Color = DuckTheme.colors.background,
+    descriptionColor: Color = DuckTheme.colors.onBackground,
     value: String,
     @DrawableRes drawableRes: Int? = null,
     isError: Boolean = false,
@@ -53,11 +55,12 @@ fun DuckBasicTextField(
     val changePasswordVisible = { isVisible = !isVisible }
 
     Box {
-        Column {
+        Column(modifier = Modifier.padding(vertical = 16.dp)) {
             FieldTitle(
                 title = title,
                 titleColor = titleColor,
             )
+            Spacer(modifier = Modifier.height(12.dp))
             Row {
                 Column(
                     modifier = Modifier
@@ -73,7 +76,7 @@ fun DuckBasicTextField(
                         textStyle = DuckTypography.body1,
                         maxLines = 1,
                         singleLine = true,
-                        visualTransformation = if (isVisible) VisualTransformation.None
+                        visualTransformation = if (isVisible || !isPassword) VisualTransformation.None
                         else PasswordVisualTransformation(),
                     ) { innerTextField ->
                         innerTextField()
@@ -126,7 +129,6 @@ private fun FieldTitle(
             text = title,
             color = titleColor,
         )
-        Spacer(modifier = Modifier.height(12.dp))
     }
 }
 
@@ -136,21 +138,22 @@ private fun FieldDescription(
     descriptionColor: Color,
     isError: Boolean,
 ) {
-    if (description != null) {
-        Spacer(modifier = Modifier.height(12.dp))
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            Image(
-                painter = painterResource(
-                    id = if (isError) R.drawable.ic_failure
-                    else R.drawable.ic_success,
-                ),
-                contentDescription = stringResource(id = R.string.content_description_icon_text_field_description),
-            )
-            Spacer(modifier = Modifier.width(4.dp))
-            Body3(
-                text = description,
-                color = descriptionColor,
-            )
+    Column {
+        AnimatedVisibility(isError) {
+            Row(
+                modifier = Modifier.padding(top = 12.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Image(
+                    painter = painterResource(R.drawable.ic_failure),
+                    contentDescription = stringResource(id = R.string.content_description_icon_text_field_description),
+                )
+                Spacer(modifier = Modifier.width(4.dp))
+                Body3(
+                    text = description!!,
+                    color = descriptionColor,
+                )
+            }
         }
     }
 }
