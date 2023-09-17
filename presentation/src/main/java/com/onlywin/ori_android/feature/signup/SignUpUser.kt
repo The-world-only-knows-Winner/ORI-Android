@@ -10,6 +10,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -29,7 +30,8 @@ private val pageTitles = listOf(
 
 @Composable
 internal fun SignUpUser(
-    moveToSignUpAccount: () -> Unit
+    moveToSignUpAccount: () -> Unit,
+    moveToComplete: () -> Unit,
 ) {
 
     var birth by remember { mutableStateOf("") }
@@ -42,9 +44,14 @@ internal fun SignUpUser(
         name = value
     }
 
-    var currentStep by remember { mutableIntStateOf(0) }
+    var currentStep by rememberSaveable { mutableIntStateOf(0) }
 
-    val moveToNextStep = { currentStep += 1 }
+    val moveToNextStep = {
+        when(currentStep){
+            0 -> currentStep += 1
+            else -> moveToComplete()
+        }
+    }
 
     val buttonText = when (currentStep) {
         0 -> stringResource(id = R.string.next)
@@ -69,7 +76,6 @@ internal fun SignUpUser(
             text = buttonText,
             onClick = moveToNextStep,
         )
-        Spacer(modifier = Modifier.height(16.dp))
     }
 }
 
@@ -104,8 +110,8 @@ private fun SignUpUserInputs(
 @Composable
 private fun SignUpUserLightPreview() {
     DuckTheme {
-        SignUpUser {
-
+        SignUpUser(moveToSignUpAccount = { /*TODO*/ }) {
+            
         }
     }
 }
@@ -118,8 +124,8 @@ private fun SignUpUserLightPreview() {
 @Composable
 private fun SignUpUserDarkPreview() {
     DuckTheme {
-        SignUpUser {
-
+        SignUpUser(moveToSignUpAccount = { /*TODO*/ }) {
+            
         }
     }
 }

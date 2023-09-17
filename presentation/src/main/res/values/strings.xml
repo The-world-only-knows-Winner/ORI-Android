@@ -24,6 +24,7 @@
 
     <string name="content_description_image_onboarding">Onboarding Image</string>
 
+    <string name="content_description_image_complete">Complete Image</string>
     <!--splash-->
     <string name="splash_image_description">당신만의 대중교통 알림 서비스</string>
 
@@ -50,5 +51,6 @@
     <string name="sign_up_account_please_enter_name">이름을 알려주세요</string>
     <string name="sign_up_account_please_enter_birth">생년월일을 알려주세요</string>
 
-    <!--sign up user-->
+    <!--complete-->
+    <string name="sign_up_complete_welcome">오신것을 환영해요</string>
 </resources>

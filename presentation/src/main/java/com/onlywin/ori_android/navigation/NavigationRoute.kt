@@ -5,6 +5,7 @@ sealed class NavigationRoute(val route: String) {
         const val SignIn = "signIn"
         const val SignUpAccount = "signUpAccount"
         const val SignUpUser = "signUpUser"
+        const val SignUpComplete = "signUpComplete"
     }
 
     object User : NavigationRoute(route = "User") {
