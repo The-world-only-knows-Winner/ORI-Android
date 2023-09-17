@@ -36,9 +36,9 @@ import com.onlywin.designsystem.fondation.typography.DuckTypography
 @Composable
 fun DuckTextField(
     title: String? = null,
-    titleColor: Color = DuckTheme.colors.background,
+    titleColor: Color = DuckTheme.colors.onBackground,
     description: String? = null,
-    descriptionColor: Color = DuckTheme.colors.background,
+    descriptionColor: Color = DuckTheme.colors.onBackground,
     value: String,
     @DrawableRes drawableRes: Int? = null,
     isError: Boolean = false,
@@ -73,7 +73,7 @@ fun DuckTextField(
                         textStyle = DuckTypography.body1,
                         maxLines = 1,
                         singleLine = true,
-                        visualTransformation = if (isVisible) VisualTransformation.None
+                        visualTransformation = if (isVisible || !isPassword) VisualTransformation.None
                         else PasswordVisualTransformation(),
                     ) { innerTextField ->
                         innerTextField()
