@@ -26,11 +26,5 @@ internal fun NavGraphBuilder.userNavigation(
                 moveToSignIn = moveToSignIn,
             )
         }
-
-        composable(NavigationRoute.User.SignUpAccount) {
-            SignUpAccount(
-                moveToOnboarding = moveToOnboarding,
-            )
-        }
     }
 }

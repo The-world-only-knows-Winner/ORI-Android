@@ -9,5 +9,6 @@ sealed class NavigationRoute(val route: String) {
         const val Splash = "splash"
         const val Onboarding = "onboarding"
         const val SignUpAccount = "signUpAccount"
+        const val SignUpUser = "signUpUser"
     }
 }
