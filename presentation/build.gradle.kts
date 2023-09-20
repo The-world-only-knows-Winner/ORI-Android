@@ -52,6 +52,7 @@ android {
 dependencies {
     implementation(project(":designsystem"))
 
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.6.2")
     implementation("io.insert-koin:koin-androidx-compose:3.5.0")
     implementation("androidx.navigation:navigation-compose:2.7.2")
     implementation("androidx.core:core-ktx:1.9.0")

@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.onlywin.designsystem.DuckTheme
 import com.onlywin.designsystem.button.DuckLargeButton
 import com.onlywin.designsystem.component.DuckLayout
@@ -28,7 +29,7 @@ internal fun SignIn(
     signInViewModel: SignInViewModel = koinViewModel(),
 ) {
 
-    val state by signInViewModel.state.collectAsState()
+    val state by signInViewModel.state.collectAsStateWithLifecycle()
 
     var emailError by remember { mutableStateOf(false) }
     var passwordError by remember { mutableStateOf(false) }
