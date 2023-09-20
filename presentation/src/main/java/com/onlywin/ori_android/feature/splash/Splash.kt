@@ -1,4 +1,4 @@
-package com.onlywin.ori_android.feature
+package com.onlywin.ori_android.feature.splash
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.Image

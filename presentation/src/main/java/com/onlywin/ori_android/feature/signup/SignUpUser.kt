@@ -47,7 +47,7 @@ internal fun SignUpUser(
     var currentStep by rememberSaveable { mutableIntStateOf(0) }
 
     val moveToNextStep = {
-        when(currentStep){
+        when (currentStep) {
             0 -> currentStep += 1
             else -> moveToComplete()
         }
@@ -111,7 +111,7 @@ private fun SignUpUserInputs(
 private fun SignUpUserLightPreview() {
     DuckTheme {
         SignUpUser(moveToSignUpAccount = { /*TODO*/ }) {
-            
+
         }
     }
 }
@@ -125,7 +125,7 @@ private fun SignUpUserLightPreview() {
 private fun SignUpUserDarkPreview() {
     DuckTheme {
         SignUpUser(moveToSignUpAccount = { /*TODO*/ }) {
-            
+
         }
     }
 }
