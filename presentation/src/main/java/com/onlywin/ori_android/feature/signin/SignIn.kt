@@ -4,6 +4,7 @@ import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -16,27 +17,28 @@ import com.onlywin.designsystem.DuckTheme
 import com.onlywin.designsystem.button.DuckLargeButton
 import com.onlywin.designsystem.component.DuckLayout
 import com.onlywin.designsystem.header.DuckAuthHeader
-import com.onlywin.designsystem.header.DuckHeader
 import com.onlywin.designsystem.textfield.DuckTextField
 import com.onlywin.ori_android.R
+import com.onlywin.ori_android.viewmodel.SignInViewModel
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 internal fun SignIn(
     moveToOnboarding: () -> Unit,
+    signInViewModel: SignInViewModel = koinViewModel(),
 ) {
 
-    var email by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
+    val state by signInViewModel.state.collectAsState()
 
     var emailError by remember { mutableStateOf(false) }
     var passwordError by remember { mutableStateOf(false) }
 
     val onEmailChange = { value: String ->
-        email = value
+        signInViewModel.setEmail(value)
     }
 
     val onPasswordChange = { value: String ->
-        password = value
+        signInViewModel.setPassword(value)
     }
 
     val signIn = {}
@@ -48,9 +50,9 @@ internal fun SignIn(
             leadingOnClick = moveToOnboarding,
         )
         SignInInput(
-            email = email,
+            email = state.email,
             onEmailChange = onEmailChange,
-            password = password,
+            password = state.password,
             onPasswordChange = onPasswordChange,
             emailError = emailError,
             passwordError = passwordError,
@@ -96,7 +98,7 @@ private fun SignInInput(
 @Composable
 private fun SignInLightPreview() {
     DuckTheme {
-        SignIn {}
+        SignIn(moveToOnboarding = { /*TODO*/ })
     }
 }
 
@@ -108,6 +110,6 @@ private fun SignInLightPreview() {
 @Composable
 private fun SignInDarkPreview() {
     DuckTheme {
-        SignIn {}
+        SignIn(moveToOnboarding = { /*TODO*/ })
     }
 }
