@@ -1,6 +1,6 @@
 package com.onlywin.ori_android.feature.signin
 
-import com.onlywin.ori_android.viewmodel.State
+import com.onlywin.ori_android.base.State
 
 data class SignInState(
     val email: String,

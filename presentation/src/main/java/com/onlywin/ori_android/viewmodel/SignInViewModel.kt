@@ -1,5 +1,6 @@
 package com.onlywin.ori_android.viewmodel
 
+import com.onlywin.ori_android.base.BaseViewModel
 import com.onlywin.ori_android.feature.signin.SignInSideEffect
 import com.onlywin.ori_android.feature.signin.SignInState
 

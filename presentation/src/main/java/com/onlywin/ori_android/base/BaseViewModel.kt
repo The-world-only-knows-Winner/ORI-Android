@@ -1,4 +1,4 @@
-package com.onlywin.ori_android.viewmodel
+package com.onlywin.ori_android.base
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -26,6 +26,3 @@ abstract class BaseViewModel<S : State, E : SideEffect>(default: S) : ViewModel(
         }
     }
 }
-
-interface State
-interface SideEffect
