@@ -1,9 +1,13 @@
 package com.onlywin.ori_android.feature.selectposition
 
+import android.Manifest
 import android.content.Context
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.ImageView
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -15,6 +19,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -37,10 +42,15 @@ import com.onlywin.designsystem.fondation.typography.Body3
 import com.onlywin.designsystem.fondation.typography.Heading2
 import com.onlywin.designsystem.header.DuckHeader
 import com.onlywin.ori_android.R
+import com.onlywin.ori_android.util.setUserLocation
 
 enum class PositionType {
     START,
     END,
+}
+
+private val onRequestPermissionResult: (Boolean) -> Unit = {
+
 }
 
 @Composable
@@ -49,6 +59,15 @@ internal fun SelectPosition() {
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
+
+        val activityLauncher = rememberLauncherForActivityResult(
+            contract = ActivityResultContracts.RequestPermission(),
+            onResult = onRequestPermissionResult,
+        )
+
+        LaunchedEffect(Unit) {
+            activityLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
+        }
 
         val start by remember { mutableStateOf("") }
         val end by remember { mutableStateOf("") }
@@ -120,6 +139,7 @@ private fun Destinations(
     }
 }
 
+
 private fun initMapView(context: Context): View {
     val view = LayoutInflater.from(context).inflate(
         /* resource = */ R.layout.select_position,
@@ -127,10 +147,15 @@ private fun initMapView(context: Context): View {
         /* attachToRoot = */ false,
     )
 
+    val marker = view.findViewById<ImageView>(R.id.image_marker)
+
     val mapView = view.findViewById<MapView>(R.id.map_view)
     mapView.start(object : KakaoMapReadyCallback() {
         override fun onMapReady(kakaoMap: KakaoMap) {
-
+            setUserLocation(
+                context = context,
+                kakaoMap = kakaoMap,
+            )
         }
     })
 
