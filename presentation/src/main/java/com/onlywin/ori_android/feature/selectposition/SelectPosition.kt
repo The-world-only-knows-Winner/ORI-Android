@@ -3,6 +3,7 @@ package com.onlywin.ori_android.feature.selectposition
 import android.Manifest
 import android.content.Context
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
+import android.location.Geocoder
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
@@ -23,6 +24,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -72,8 +74,16 @@ internal fun SelectPosition() {
         val start by remember { mutableStateOf("") }
         val end by remember { mutableStateOf("") }
 
-        val position by remember { mutableStateOf("대덕소프트웨어마이스터고등학교") }
-        val positionDetail by remember { mutableStateOf("대전광역시 유성구 가정북로 76") }
+        var position by remember { mutableStateOf("대덕소프트웨어마이스터고등학교") }
+        var positionDetail by remember { mutableStateOf("") }
+
+        val onPositionChange: (String) -> Unit = { value: String ->
+            position = value
+        }
+
+        val onPositionDetailChange: (String) -> Unit = { value: String ->
+            positionDetail = value
+        }
 
         val onStartClick: () -> Unit = {
 
@@ -94,7 +104,13 @@ internal fun SelectPosition() {
             )
             AndroidView(
                 modifier = Modifier.weight(1f),
-                factory = { initMapView(it) },
+                factory = {
+                    initMapView(
+                        context = it,
+                        onPositionChange = onPositionChange,
+                        onPositionDetailChange = onPositionDetailChange,
+                    )
+                },
             )
             Position(
                 position = position,
@@ -140,7 +156,11 @@ private fun Destinations(
 }
 
 
-private fun initMapView(context: Context): View {
+private fun initMapView(
+    context: Context,
+    onPositionChange: (String) -> Unit,
+    onPositionDetailChange: (String) -> Unit,
+): View {
     val view = LayoutInflater.from(context).inflate(
         /* resource = */ R.layout.select_position,
         /* root = */ null,
@@ -156,6 +176,19 @@ private fun initMapView(context: Context): View {
                 context = context,
                 kakaoMap = kakaoMap,
             )
+            kakaoMap.setOnCameraMoveEndListener { _, cameraPosition, _ ->
+                with(cameraPosition.position) {
+                    val geoCoder = Geocoder(context)
+                    val location = geoCoder.getFromLocation(
+                        this.latitude,
+                        this.longitude,
+                        1,
+                    )?.first()
+
+                    val subAddress = location?.getAddressLine(0)
+                    onPositionDetailChange(subAddress!!)
+                }
+            }
         }
     })
 
