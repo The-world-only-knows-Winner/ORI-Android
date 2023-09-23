@@ -57,4 +57,7 @@
     <!--select position-->
     <string name="select_position_start_null">출발지 미지정</string>
     <string name="select_position_end_null">도착지 미지정</string>
+
+    <string name="select_position_select_start">출발지로 지정</string>
+    <string name="select_position_select_end">도착지로 지정</string>
 </resources>
