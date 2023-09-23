@@ -5,6 +5,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.onlywin.ori_android.navigation.NavigationRoute
 import com.onlywin.ori_android.navigation.authNavigation
+import com.onlywin.ori_android.navigation.mainNavigation
 import com.onlywin.ori_android.navigation.userNavigation
 
 @Composable
@@ -13,7 +14,7 @@ internal fun DuckApp() {
 
     NavHost(
         navController = navController,
-        startDestination = NavigationRoute.User.route,
+        startDestination = NavigationRoute.Main.route,
     ) {
         authNavigation(
             moveToOnboarding = { navController.popBackStack() },
@@ -26,5 +27,6 @@ internal fun DuckApp() {
             moveToSignUp = { navController.navigate(NavigationRoute.Auth.SignUpAccount) },
             moveToSignIn = { navController.navigate(NavigationRoute.Auth.SignIn) },
         )
+        mainNavigation()
     }
 }
