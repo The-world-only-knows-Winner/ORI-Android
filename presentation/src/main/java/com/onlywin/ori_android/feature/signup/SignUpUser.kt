@@ -4,7 +4,6 @@ import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -59,7 +58,6 @@ internal fun SignUpUser(
     }
 
     DuckLayout(horizontal = 20.dp) {
-        Spacer(modifier = Modifier.height(12.dp))
         DuckAuthHeader(
             pageTitle = stringResource(id = pageTitles[currentStep]),
             leadingOnClick = moveToSignUpAccount,

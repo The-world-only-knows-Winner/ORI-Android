@@ -93,11 +93,13 @@ internal fun SelectPosition() {
 
         }
 
-        DuckLayout {
-            DuckHeader(
-                leadingIcon = com.onlywin.designsystem.R.drawable.ic_arrow_back,
-                trailingIcon = com.onlywin.designsystem.R.drawable.ic_search,
-            )
+        DuckLayout() {
+            Box(modifier = Modifier.padding(horizontal = 20.dp)) {
+                DuckHeader(
+                    leadingIcon = com.onlywin.designsystem.R.drawable.ic_arrow_back,
+                    trailingIcon = com.onlywin.designsystem.R.drawable.ic_search,
+                )
+            }
             Destinations(
                 start = start,
                 end = end,

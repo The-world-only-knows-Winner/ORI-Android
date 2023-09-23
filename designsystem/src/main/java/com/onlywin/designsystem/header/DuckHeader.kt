@@ -45,10 +45,7 @@ fun DuckHeader(
 ) {
     Column {
         Row(
-            modifier = Modifier.padding(
-                vertical = 8.dp,
-                horizontal = 20.dp,
-            ),
+            modifier = Modifier.padding(vertical = 8.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
             if (leadingIcon != null) {
