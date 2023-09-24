@@ -52,6 +52,7 @@ android {
 dependencies {
     implementation(project(":designsystem"))
 
+    implementation("com.google.android.material:material:1.9.0")
     implementation("com.kakao.maps.open:android:2.6.0")
     implementation("androidx.lifecycle:lifecycle-runtime-compose:2.6.2")
     implementation("io.insert-koin:koin-androidx-compose:3.5.0")
