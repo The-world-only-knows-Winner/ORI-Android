@@ -2,9 +2,7 @@ package com.onlywin.ori_android.feature.signin
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -45,7 +43,6 @@ internal fun SignIn(
     val signIn = {}
 
     DuckLayout(horizontal = 20.dp) {
-        Spacer(modifier = Modifier.height(12.dp))
         DuckAuthHeader(
             pageTitle = stringResource(id = R.string.sign_in_welcome),
             leadingOnClick = moveToOnboarding,

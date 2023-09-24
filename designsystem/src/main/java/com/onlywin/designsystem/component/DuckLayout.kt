@@ -38,6 +38,7 @@ fun DuckLayout(
         horizontalAlignment = horizontalAlignment,
         verticalArrangement = verticalArrangement
     ) {
+        Spacer(modifier = Modifier.height(12.dp))
         content()
         Spacer(modifier = Modifier.height(16.dp))
     }
