@@ -39,20 +39,19 @@ private fun DuckBasicButton(
     Box(
         modifier = modifier
             .clip(shape)
-            .background(color = if (isPressed) buttonColor.pressedColor else buttonColor.backgroundColor)
             .duckClickable(
                 onClick = onClick,
                 enabled = enabled,
                 rippleEnabled = rippleEnabled,
                 interactionSource = interactionSource,
-            ),
+            )
+            .background(color = if (isPressed) buttonColor.pressedColor else buttonColor.backgroundColor),
         contentAlignment = Alignment.Center,
     ) {
         Body1(
             modifier = Modifier.padding(horizontal = 8.dp),
             text = text,
             color = buttonColor.textColor,
-            onClick = onClick,
         )
     }
 }

@@ -22,6 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.onlywin.designsystem.DuckTheme
 import com.onlywin.designsystem.button.DuckLargeButton
+import com.onlywin.designsystem.clickable.duckClickable
 import com.onlywin.designsystem.component.DuckLayout
 import com.onlywin.designsystem.component.Indicator
 import com.onlywin.designsystem.fondation.typography.Body3
@@ -76,9 +77,9 @@ internal fun Onboarding(
         }
         Spacer(modifier = Modifier.height(8.dp))
         Body4(
+            modifier = Modifier.duckClickable(onClick = moveToSignIn),
             text = stringResource(id = R.string.onboarding_start_with_original_account),
             decoration = TextDecoration.Underline,
-            onClick = moveToSignIn,
         )
     }
 }
