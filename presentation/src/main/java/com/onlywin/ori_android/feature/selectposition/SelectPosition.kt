@@ -6,7 +6,6 @@ import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import android.location.Geocoder
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.ImageView
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
@@ -33,6 +32,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.kakao.vectormap.KakaoMap
 import com.kakao.vectormap.KakaoMapReadyCallback
 import com.kakao.vectormap.MapView
@@ -170,7 +170,7 @@ private fun initMapView(
         /* attachToRoot = */ false,
     )
 
-    val marker = view.findViewById<ImageView>(R.id.image_marker)
+    val fab = view.findViewById<FloatingActionButton>(R.id.fab_gps)
 
     val mapView = view.findViewById<MapView>(R.id.map_view)
     mapView.start(object : KakaoMapReadyCallback() {
@@ -191,6 +191,12 @@ private fun initMapView(
                     val subAddress = location?.getAddressLine(0)
                     onPositionDetailChange(subAddress!!)
                 }
+            }
+            fab.setOnClickListener {
+                setUserLocation(
+                    context = context,
+                    kakaoMap = kakaoMap,
+                )
             }
         }
     })

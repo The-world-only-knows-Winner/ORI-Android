@@ -3,6 +3,7 @@ package com.onlywin.ori_android.util
 import android.content.Context
 import android.location.LocationManager
 import com.kakao.vectormap.KakaoMap
+import com.kakao.vectormap.camera.CameraAnimation
 import com.kakao.vectormap.camera.CameraPosition
 import com.kakao.vectormap.camera.CameraUpdateFactory
 
@@ -37,8 +38,9 @@ internal fun setUserLocation(
                     0.0,
                     10.0,
                     3000.0,
-                )
-            )
+                ),
+            ),
+            CameraAnimation.from(500),
         )
     }.onFailure {
         when (it) {
