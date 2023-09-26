@@ -51,6 +51,7 @@ android {
 
 dependencies {
     implementation(project(":designsystem"))
+    implementation(project(":domain"))
 
     implementation("com.google.android.material:material:1.9.0")
     implementation("com.kakao.maps.open:android:2.6.0")
