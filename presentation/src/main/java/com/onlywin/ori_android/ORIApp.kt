@@ -9,12 +9,12 @@ import com.onlywin.ori_android.navigation.mainNavigation
 import com.onlywin.ori_android.navigation.userNavigation
 
 @Composable
-internal fun DuckApp() {
+internal fun ORIApp() {
     val navController = rememberNavController()
 
     NavHost(
         navController = navController,
-        startDestination = NavigationRoute.Main.route,
+        startDestination = NavigationRoute.User.route,
     ) {
         authNavigation(
             moveToOnboarding = { navController.popBackStack() },
@@ -23,7 +23,13 @@ internal fun DuckApp() {
             moveToComplete = { navController.navigate(NavigationRoute.Auth.SignUpComplete) }
         )
         userNavigation(
-            moveToOnboarding = { navController.navigate(NavigationRoute.User.Onboarding) },
+            moveToOnboarding = {
+                navController.navigate(NavigationRoute.User.Onboarding) {
+                    popUpTo(NavigationRoute.User.Splash) {
+                        inclusive = true
+                    }
+                }
+            },
             moveToSignUp = { navController.navigate(NavigationRoute.Auth.SignUpAccount) },
             moveToSignIn = { navController.navigate(NavigationRoute.Auth.SignIn) },
         )

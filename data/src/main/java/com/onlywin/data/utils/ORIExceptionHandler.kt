@@ -1,4 +1,4 @@
-package com.onlywin.data
+package com.onlywin.data.utils
 
 import com.onlywin.domain.exception.ConflictException
 import com.onlywin.domain.exception.InternalServerException
