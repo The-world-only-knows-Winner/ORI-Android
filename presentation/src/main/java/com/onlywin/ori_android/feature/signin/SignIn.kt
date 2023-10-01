@@ -1,7 +1,11 @@
 package com.onlywin.ori_android.feature.signin
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.imePadding
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -42,24 +46,28 @@ internal fun SignIn(
 
     val signIn = {}
 
-    DuckLayout(horizontal = 20.dp) {
-        DuckAuthHeader(
-            pageTitle = stringResource(id = R.string.sign_in_welcome),
-            leadingOnClick = moveToOnboarding,
-        )
-        SignInInput(
-            email = state.email,
-            onEmailChange = onEmailChange,
-            password = state.password,
-            onPasswordChange = onPasswordChange,
-            emailError = emailError,
-            passwordError = passwordError,
-        )
+    DuckLayout {
+        Column(modifier = Modifier.padding(horizontal = 20.dp)) {
+            DuckAuthHeader(
+                pageTitle = stringResource(id = R.string.sign_in_welcome),
+                leadingOnClick = moveToOnboarding,
+            )
+            SignInInput(
+                email = state.email,
+                onEmailChange = onEmailChange,
+                password = state.password,
+                onPasswordChange = onPasswordChange,
+                emailError = emailError,
+                passwordError = passwordError,
+            )
+        }
         Spacer(modifier = Modifier.weight(1f))
-        DuckLargeButton(
-            text = stringResource(id = R.string.sign_in_start),
-            onClick = signIn,
-        )
+        Box(modifier = Modifier.imePadding()) {
+            DuckLargeButton(
+                text = stringResource(id = R.string.sign_in_start),
+                onClick = signIn,
+            )
+        }
     }
 }
 

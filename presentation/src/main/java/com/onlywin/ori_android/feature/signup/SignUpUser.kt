@@ -2,8 +2,11 @@ package com.onlywin.ori_android.feature.signup
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.imePadding
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -57,23 +60,27 @@ internal fun SignUpUser(
         else -> stringResource(id = R.string.complete)
     }
 
-    DuckLayout(horizontal = 20.dp) {
-        DuckAuthHeader(
-            pageTitle = stringResource(id = pageTitles[currentStep]),
-            leadingOnClick = moveToSignUpAccount,
-        )
-        SignUpUserInputs(
-            birth = birth,
-            onBirthChange = onBirthChange,
-            name = name,
-            onNameChange = onNameChange,
-            currentStep = currentStep,
-        )
+    DuckLayout {
+        Column(modifier = Modifier.padding(horizontal = 20.dp)) {
+            DuckAuthHeader(
+                pageTitle = stringResource(id = pageTitles[currentStep]),
+                leadingOnClick = moveToSignUpAccount,
+            )
+            SignUpUserInputs(
+                birth = birth,
+                onBirthChange = onBirthChange,
+                name = name,
+                onNameChange = onNameChange,
+                currentStep = currentStep,
+            )
+        }
         Spacer(modifier = Modifier.weight(1f))
-        DuckLargeButton(
-            text = buttonText,
-            onClick = moveToNextStep,
-        )
+        Box(modifier = Modifier.imePadding()) {
+            DuckLargeButton(
+                text = buttonText,
+                onClick = moveToNextStep,
+            )
+        }
     }
 }
 

@@ -2,8 +2,11 @@ package com.onlywin.ori_android.feature.signup
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.imePadding
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -56,33 +59,37 @@ internal fun SignUpAccount(
 
     var currentStep by rememberSaveable { mutableIntStateOf(0) }
 
-    val moveToNextStep = { 
-        when(currentStep){
+    val moveToNextStep = {
+        when (currentStep) {
             in 0..1 -> currentStep += 1
             else -> moveToSignUpUser()
         }
     }
 
-    DuckLayout(horizontal = 20.dp) {
-        DuckAuthHeader(
-            pageTitle = stringResource(id = pageTitles[currentStep]),
-            leadingOnClick = moveToOnboarding,
-        )
-        SignUpAccountInput(
-            email = email,
-            onEmailChange = onEmailChange,
-            resendVerifyCode = resendVerifyCode,
-            verifyCode = verifyCode,
-            onVerifyCodeChange = onVerifyCode,
-            password = password,
-            onPasswordChange = onPasswordChange,
-            currentStep = currentStep,
-        )
+    DuckLayout {
+        Column(modifier = Modifier.padding(horizontal = 20.dp)) {
+            DuckAuthHeader(
+                pageTitle = stringResource(id = pageTitles[currentStep]),
+                leadingOnClick = moveToOnboarding,
+            )
+            SignUpAccountInput(
+                email = email,
+                onEmailChange = onEmailChange,
+                resendVerifyCode = resendVerifyCode,
+                verifyCode = verifyCode,
+                onVerifyCodeChange = onVerifyCode,
+                password = password,
+                onPasswordChange = onPasswordChange,
+                currentStep = currentStep,
+            )
+        }
         Spacer(modifier = Modifier.weight(1f))
-        DuckLargeButton(
-            text = stringResource(id = R.string.next),
-            onClick = moveToNextStep,
-        )
+        Box(modifier = Modifier.imePadding()) {
+            DuckLargeButton(
+                text = stringResource(id = R.string.next),
+                onClick = moveToNextStep,
+            )
+        }
     }
 }
 
@@ -136,7 +143,7 @@ private fun SignUpAccountInput(
 private fun SignUpAccountLightPreview() {
     DuckTheme {
         SignUpAccount(moveToOnboarding = { /*TODO*/ }) {
-            
+
         }
     }
 }
@@ -150,7 +157,7 @@ private fun SignUpAccountLightPreview() {
 private fun SignUpAccountDarkPreview() {
     DuckTheme {
         SignUpAccount(moveToOnboarding = { /*TODO*/ }) {
-            
+
         }
     }
 }

@@ -24,6 +24,12 @@ import com.onlywin.designsystem.clickable.duckClickable
 import com.onlywin.designsystem.fondation.color.ButtonColor
 import com.onlywin.designsystem.fondation.color.DuckButtonColor
 import com.onlywin.designsystem.fondation.typography.Body1
+import com.onlywin.designsystem.isKeyboardShowed
+
+enum class ButtonType {
+    LARGE,
+    MEDIUM,
+}
 
 @Composable
 private fun DuckBasicButton(
@@ -34,6 +40,7 @@ private fun DuckBasicButton(
     enabled: Boolean,
     rippleEnabled: Boolean,
     isKeyboardShowed: Boolean,
+    type: ButtonType,
     onClick: () -> Unit,
 ) {
 
@@ -55,7 +62,10 @@ private fun DuckBasicButton(
 
     Box(
         modifier = modifier
-            .padding(horizontal = padding)
+            .padding(
+                horizontal = if (type == ButtonType.LARGE) padding
+                else 0.dp,
+            )
             .clip(shape = RoundedCornerShape(shape))
             .duckClickable(
                 onClick = onClick,
@@ -81,7 +91,6 @@ fun DuckLargeButton(
     buttonColor: ButtonColor = DuckButtonColor.DefaultColor,
     enabled: Boolean = true,
     rippleEnabled: Boolean = true,
-    isKeyboardShowed: Boolean = false,
     onClick: () -> Unit,
 ) {
     DuckBasicButton(
@@ -93,7 +102,8 @@ fun DuckLargeButton(
         buttonColor = if (enabled) buttonColor else DuckButtonColor.DisabledColor,
         enabled = enabled,
         rippleEnabled = rippleEnabled,
-        isKeyboardShowed = isKeyboardShowed,
+        isKeyboardShowed = isKeyboardShowed.value,
+        type = ButtonType.LARGE,
         onClick = onClick,
     )
 }
@@ -104,7 +114,6 @@ fun DuckSmallButton(
     buttonColor: ButtonColor = DuckButtonColor.DefaultColor,
     enabled: Boolean = true,
     rippleEnabled: Boolean = true,
-    isKeyboardShowed: Boolean = false,
     onClick: () -> Unit,
 ) {
     DuckBasicButton(
@@ -116,7 +125,8 @@ fun DuckSmallButton(
         buttonColor = if (enabled) buttonColor else DuckButtonColor.DisabledColor,
         enabled = enabled,
         rippleEnabled = rippleEnabled,
-        isKeyboardShowed = isKeyboardShowed,
+        isKeyboardShowed = isKeyboardShowed.value,
+        type = ButtonType.MEDIUM,
         onClick = onClick,
     )
 }
