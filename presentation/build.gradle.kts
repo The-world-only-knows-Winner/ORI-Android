@@ -54,6 +54,7 @@ dependencies {
     implementation(project(":designsystem"))
     implementation(project(":domain"))
 
+    implementation("tech.thdev:extensions-compose-keyboard-state:1.6.0-alpha06")
     implementation("com.google.android.material:material:1.9.0")
     implementation("com.kakao.maps.open:android:2.6.0")
     implementation("androidx.lifecycle:lifecycle-runtime-compose:2.6.2")
