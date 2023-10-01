@@ -1,5 +1,6 @@
 package com.onlywin.designsystem.button
 
+import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
@@ -15,7 +16,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.onlywin.designsystem.R
 import com.onlywin.designsystem.clickable.duckClickable
 import com.onlywin.designsystem.fondation.color.ButtonColor
 import com.onlywin.designsystem.fondation.color.DuckButtonColor
@@ -25,10 +29,11 @@ import com.onlywin.designsystem.fondation.typography.Body1
 private fun DuckBasicButton(
     modifier: Modifier,
     text: String,
-    shape: RoundedCornerShape,
+    shapeSize: Dp,
     buttonColor: ButtonColor,
     enabled: Boolean,
     rippleEnabled: Boolean,
+    isKeyboardShowed: Boolean,
     onClick: () -> Unit,
 ) {
 
@@ -36,9 +41,22 @@ private fun DuckBasicButton(
 
     val isPressed by interactionSource.collectIsPressedAsState()
 
+    val padding by animateDpAsState(
+        targetValue = if (isKeyboardShowed) 0.dp
+        else 20.dp,
+        label = stringResource(id = R.string.animation_label_button_padding),
+    )
+
+    val shape by animateDpAsState(
+        targetValue = if (isKeyboardShowed) 0.dp
+        else shapeSize,
+        label = stringResource(id = R.string.animation_label_button_shape),
+    )
+
     Box(
         modifier = modifier
-            .clip(shape)
+            .padding(horizontal = padding)
+            .clip(shape = RoundedCornerShape(shape))
             .duckClickable(
                 onClick = onClick,
                 enabled = enabled,
@@ -58,21 +76,24 @@ private fun DuckBasicButton(
 
 @Composable
 fun DuckLargeButton(
+    modifier: Modifier = Modifier,
     text: String,
     buttonColor: ButtonColor = DuckButtonColor.DefaultColor,
     enabled: Boolean = true,
     rippleEnabled: Boolean = true,
+    isKeyboardShowed: Boolean = false,
     onClick: () -> Unit,
 ) {
     DuckBasicButton(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .height(48.dp),
         text = text,
-        shape = RoundedCornerShape(12.dp),
+        shapeSize = 12.dp,
         buttonColor = if (enabled) buttonColor else DuckButtonColor.DisabledColor,
         enabled = enabled,
         rippleEnabled = rippleEnabled,
+        isKeyboardShowed = isKeyboardShowed,
         onClick = onClick,
     )
 }
@@ -83,6 +104,7 @@ fun DuckSmallButton(
     buttonColor: ButtonColor = DuckButtonColor.DefaultColor,
     enabled: Boolean = true,
     rippleEnabled: Boolean = true,
+    isKeyboardShowed: Boolean = false,
     onClick: () -> Unit,
 ) {
     DuckBasicButton(
@@ -90,10 +112,11 @@ fun DuckSmallButton(
             .wrapContentWidth()
             .height(32.dp),
         text = text,
-        shape = RoundedCornerShape(8.dp),
+        shapeSize = 8.dp,
         buttonColor = if (enabled) buttonColor else DuckButtonColor.DisabledColor,
         enabled = enabled,
         rippleEnabled = rippleEnabled,
+        isKeyboardShowed = isKeyboardShowed,
         onClick = onClick,
     )
 }
