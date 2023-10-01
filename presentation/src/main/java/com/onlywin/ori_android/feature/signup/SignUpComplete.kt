@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -19,16 +20,14 @@ import com.onlywin.designsystem.button.DuckLargeButton
 import com.onlywin.designsystem.component.DuckLayout
 import com.onlywin.designsystem.fondation.typography.Heading1
 import com.onlywin.ori_android.R
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.launch
 
 @Composable
 internal fun SignUpComplete() {
-    DuckLayout(horizontal = 20.dp) {
+    DuckLayout {
         Column(
-            modifier = Modifier.fillMaxSize(0.9f),
+            modifier = Modifier
+                .fillMaxSize(0.9f)
+                .padding(horizontal = 20.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
         ) {

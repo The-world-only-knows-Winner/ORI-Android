@@ -18,4 +18,6 @@
     <!--animation label-->
     <string name="animation_label_indicator_width">Indicator animated width</string>
     <string name="animation_label_indicator_background_color">Indicator animated background color</string>
+    <string name="animation_label_button_shape">Button animated shape</string>
+    <string name="animation_label_button_padding">Button animated padding</string>
 </resources>

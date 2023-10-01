@@ -229,11 +229,7 @@ private fun Position(
         )
     }
     Row(
-        modifier = Modifier.padding(
-            horizontal = 20.dp,
-            vertical = 8.dp,
-        ),
-        horizontalArrangement = Arrangement.spacedBy(10.dp),
+        modifier = Modifier.padding(vertical = 8.dp),
     ) {
         Box(modifier = Modifier.weight(1f)) {
             DuckLargeButton(
