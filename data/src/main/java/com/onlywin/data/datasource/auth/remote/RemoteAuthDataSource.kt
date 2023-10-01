@@ -1,8 +1,8 @@
-package com.onlywin.data.datasource.auth
+package com.onlywin.data.datasource.auth.remote
 
 import com.onlywin.data.model.signin.SignInRequest
 import com.onlywin.data.model.signin.SignInResponse
 
-interface AuthDataSource {
+interface RemoteAuthDataSource {
     suspend fun signIn(signInRequest: SignInRequest): SignInResponse
 }
