@@ -15,5 +15,6 @@ sealed class NavigationRoute(val route: String) {
 
     object Main : NavigationRoute(route = "Main") {
         const val SelectPosition = "selectPosition"
+        const val Home = "home"
     }
 }
