@@ -15,6 +15,9 @@
     <string name="all">전체</string>
     <string name="favorite">즐겨찾기</string>
 
+    <string name="start">출발</string>
+    <string name="end">도착</string>
+
     <!--description-->
 
     <string name="please_enter_content">내용을 입력해주세요.</string>
@@ -24,10 +27,11 @@
 
     <!--content description-->
     <string name="content_description_image_splash">Splash Image</string>
-
     <string name="content_description_image_onboarding">Onboarding Image</string>
-
     <string name="content_description_image_complete">Complete Image</string>
+    <string name="content_description_favorite">Favorite</string>
+    <string name="content_description_notification">Notification</string>
+
     <!--splash-->
     <string name="splash_image_description">당신만의 대중교통 알림 서비스</string>
 
