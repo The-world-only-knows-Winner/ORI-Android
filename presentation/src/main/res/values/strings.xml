@@ -12,6 +12,9 @@
     <string name="next">다음</string>
     <string name="complete">완료</string>
 
+    <string name="all">전체</string>
+    <string name="favorite">즐겨찾기</string>
+
     <!--description-->
 
     <string name="please_enter_content">내용을 입력해주세요.</string>
@@ -60,4 +63,7 @@
 
     <string name="select_position_select_start">출발지로 지정</string>
     <string name="select_position_select_end">도착지로 지정</string>
+
+    <!--home-->
+
 </resources>
