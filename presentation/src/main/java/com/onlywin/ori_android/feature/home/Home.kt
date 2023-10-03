@@ -19,6 +19,7 @@ import com.onlywin.designsystem.component.DuckLayout
 import com.onlywin.designsystem.fondation.typography.Body1
 import com.onlywin.designsystem.header.DuckHeader
 import com.onlywin.ori_android.R
+import com.onlywin.ori_android.feature.all.All
 import kotlinx.coroutines.launch
 
 private val tabs = listOf(
@@ -57,26 +58,27 @@ private fun HomeTabMenu(
 
     TabRow(
         containerColor = DuckTheme.colors.background,
-        contentColor = DuckTheme.colors.background,
+        contentColor = DuckTheme.colors.onBackground,
         selectedTabIndex = pagerState.currentPage,
     ) {
         repeat(tabs.size) {
+
+            val selected = pagerState.currentPage == it
+
             Tab(
-                selected = pagerState.currentPage == it,
+                selected = selected,
                 onClick = { coroutineScope.launch { pagerState.animateScrollToPage(it) } },
+                selectedContentColor = DuckTheme.colors.onBackground,
             ) {
                 Body1(
                     modifier = Modifier.padding(vertical = 16.dp),
                     text = stringResource(id = tabs[it]),
+                    color = if (selected) DuckTheme.colors.onBackground
+                    else DuckTheme.colors.onSurface,
                 )
             }
         }
     }
-}
-
-@Composable
-private fun All() {
-
 }
 
 @Composable
