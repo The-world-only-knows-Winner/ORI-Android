@@ -12,6 +12,12 @@
     <string name="next">다음</string>
     <string name="complete">완료</string>
 
+    <string name="all">전체</string>
+    <string name="favorite">즐겨찾기</string>
+
+    <string name="start">출발</string>
+    <string name="end">도착</string>
+
     <!--description-->
 
     <string name="please_enter_content">내용을 입력해주세요.</string>
@@ -21,10 +27,9 @@
 
     <!--content description-->
     <string name="content_description_image_splash">Splash Image</string>
-
     <string name="content_description_image_onboarding">Onboarding Image</string>
-
     <string name="content_description_image_complete">Complete Image</string>
+
     <!--splash-->
     <string name="splash_image_description">당신만의 대중교통 알림 서비스</string>
 
@@ -60,4 +65,14 @@
 
     <string name="select_position_select_start">출발지로 지정</string>
     <string name="select_position_select_end">도착지로 지정</string>
+
+    <!--home-->
+    <string name="home_all_empty_title">현재 오리에 등록된 경로가 없어요</string>
+    <string name="home_all_empty_description">아래 버튼을 통해 경로를 등록해주세요</string>
+
+    <string name="home_favorite_empty_title">현재 즐겨찾기에 등록된 경로가 없어요</string>
+    <string name="home_favorite_empty_description">전체에서 자주 사용하는 경로를 즐겨찾기 해주세요!</string>
+
+    <string name="home_add_favorite">등록하러 가기</string>
+
 </resources>

@@ -15,6 +15,12 @@
 
     <string name="icon_marker">marker icon</string>
 
+    <string name="icon_favorite">favorite icon</string>
+    <string name="icon_notification">notification icon</string>
+
+    <string name="icon_bus">bus icon</string>
+    <string name="icon_destination">destination icon</string>
+
     <!--animation label-->
     <string name="animation_label_indicator_width">Indicator animated width</string>
     <string name="animation_label_indicator_background_color">Indicator animated background color</string>

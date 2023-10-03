@@ -88,6 +88,7 @@ internal fun SignUpAccount(
             DuckLargeButton(
                 text = stringResource(id = R.string.next),
                 onClick = moveToNextStep,
+                isKeyboardMode = true,
             )
         }
     }

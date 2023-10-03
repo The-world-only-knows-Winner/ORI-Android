@@ -4,9 +4,11 @@ import android.content.res.Configuration
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PagerState
@@ -67,10 +69,12 @@ internal fun Onboarding(
         Spacer(modifier = Modifier.height(4.dp))
         Body3(text = stringResource(id = onboardingDescriptions[pagerState.currentPage]))
         Spacer(modifier = Modifier.weight(1f))
-        DuckLargeButton(
-            text = stringResource(id = R.string.onboarding_start_with_new_account),
-            onClick = moveToSignUp,
-        )
+        Box(modifier = Modifier.padding(horizontal = 20.dp)) {
+            DuckLargeButton(
+                text = stringResource(id = R.string.onboarding_start_with_new_account),
+                onClick = moveToSignUp,
+            )
+        }
         Spacer(modifier = Modifier.height(8.dp))
         Body4(
             modifier = Modifier.duckClickable(onClick = moveToSignIn),

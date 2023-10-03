@@ -66,6 +66,7 @@ internal fun SignIn(
             DuckLargeButton(
                 text = stringResource(id = R.string.sign_in_start),
                 onClick = signIn,
+                isKeyboardMode = true,
             )
         }
     }

@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -58,70 +57,66 @@ private val onRequestPermissionResult: (Boolean) -> Unit = {
 
 @Composable
 internal fun SelectPosition() {
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-    ) {
 
-        val activityLauncher = rememberLauncherForActivityResult(
-            contract = ActivityResultContracts.RequestPermission(),
-            onResult = onRequestPermissionResult,
+
+    val activityLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.RequestPermission(),
+        onResult = onRequestPermissionResult,
+    )
+
+    LaunchedEffect(Unit) {
+        activityLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
+    }
+
+    val start by remember { mutableStateOf("") }
+    val end by remember { mutableStateOf("") }
+
+    var position by remember { mutableStateOf("대덕소프트웨어마이스터고등학교") }
+    var positionDetail by remember { mutableStateOf("") }
+
+    val onPositionChange: (String) -> Unit = { value: String ->
+        position = value
+    }
+
+    val onPositionDetailChange: (String) -> Unit = { value: String ->
+        positionDetail = value
+    }
+
+    val onStartClick: () -> Unit = {
+
+    }
+
+    val onEndClick: () -> Unit = {
+
+    }
+
+    DuckLayout() {
+        Box(modifier = Modifier.padding(horizontal = 20.dp)) {
+            DuckHeader(
+                leadingIcon = com.onlywin.designsystem.R.drawable.ic_arrow_back,
+                trailingIcon = com.onlywin.designsystem.R.drawable.ic_search,
+            )
+        }
+        Destinations(
+            start = start,
+            end = end,
         )
-
-        LaunchedEffect(Unit) {
-            activityLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
-        }
-
-        val start by remember { mutableStateOf("") }
-        val end by remember { mutableStateOf("") }
-
-        var position by remember { mutableStateOf("대덕소프트웨어마이스터고등학교") }
-        var positionDetail by remember { mutableStateOf("") }
-
-        val onPositionChange: (String) -> Unit = { value: String ->
-            position = value
-        }
-
-        val onPositionDetailChange: (String) -> Unit = { value: String ->
-            positionDetail = value
-        }
-
-        val onStartClick: () -> Unit = {
-
-        }
-
-        val onEndClick: () -> Unit = {
-
-        }
-
-        DuckLayout() {
-            Box(modifier = Modifier.padding(horizontal = 20.dp)) {
-                DuckHeader(
-                    leadingIcon = com.onlywin.designsystem.R.drawable.ic_arrow_back,
-                    trailingIcon = com.onlywin.designsystem.R.drawable.ic_search,
+        AndroidView(
+            modifier = Modifier.weight(1f),
+            factory = {
+                initMapView(
+                    context = it,
+                    onPositionChange = onPositionChange,
+                    onPositionDetailChange = onPositionDetailChange,
                 )
-            }
-            Destinations(
-                start = start,
-                end = end,
-            )
-            AndroidView(
-                modifier = Modifier.weight(1f),
-                factory = {
-                    initMapView(
-                        context = it,
-                        onPositionChange = onPositionChange,
-                        onPositionDetailChange = onPositionDetailChange,
-                    )
-                },
-            )
-            Position(
-                position = position,
-                positionDetail = positionDetail,
-                onStartClick = onStartClick,
-                onEndClick = onEndClick,
-            )
-        }
+            },
+        )
+        Position(
+            position = position,
+            positionDetail = positionDetail,
+            onStartClick = onStartClick,
+            onEndClick = onEndClick,
+        )
     }
 }
 
