@@ -1,4 +1,4 @@
-package com.onlywin.ori_android.feature.all
+package com.onlywin.ori_android.feature.destinations
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
@@ -29,19 +29,70 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.onlywin.designsystem.DuckTheme
+import com.onlywin.designsystem.button.DuckLargeButton
 import com.onlywin.designsystem.clickable.duckClickable
 import com.onlywin.designsystem.fondation.typography.Body1
 import com.onlywin.designsystem.fondation.typography.Body3
 import com.onlywin.designsystem.fondation.typography.Body4
+import com.onlywin.designsystem.fondation.typography.Heading2
 import com.onlywin.ori_android.R
 
 @Composable
-internal fun All() {
+internal fun Destinations(
+    screenType: ScreenType,
+) {
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Routes()
+        Empty(screenType = screenType)
+    }
+}
+
+
+enum class ScreenType {
+    ALL,
+    FAVORITE,
+}
+
+@Composable
+private fun Empty(
+    screenType: ScreenType,
+) {
+
+    val onClick = { }
+
+    val title = when (screenType) {
+        ScreenType.ALL -> stringResource(id = R.string.home_all_empty_title)
+        else -> stringResource(id = R.string.home_favorite_empty_title)
+    }
+
+    val description = when (screenType) {
+        ScreenType.ALL -> stringResource(id = R.string.home_favorite_empty_title)
+        else -> stringResource(id = R.string.home_favorite_empty_description)
+    }
+
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center,
+    ) {
+        Column(
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
+            Heading2(text = title)
+            Body1(
+                text = description,
+                color = DuckTheme.colors.surfaceTint,
+            )
+            if (screenType == ScreenType.ALL) {
+                Spacer(modifier = Modifier.height(16.dp))
+                DuckLargeButton(
+                    text = stringResource(id = R.string.home_add_favorite),
+                    onClick = onClick,
+                )
+            }
+        }
     }
 }
 

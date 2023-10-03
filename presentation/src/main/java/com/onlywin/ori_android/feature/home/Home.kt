@@ -19,7 +19,8 @@ import com.onlywin.designsystem.component.DuckLayout
 import com.onlywin.designsystem.fondation.typography.Body1
 import com.onlywin.designsystem.header.DuckHeader
 import com.onlywin.ori_android.R
-import com.onlywin.ori_android.feature.all.All
+import com.onlywin.ori_android.feature.destinations.Destinations
+import com.onlywin.ori_android.feature.destinations.ScreenType
 import kotlinx.coroutines.launch
 
 private val tabs = listOf(
@@ -40,10 +41,13 @@ internal fun Home() {
         )
         HomeTabMenu(pagerState = pagerState)
         HorizontalPager(state = pagerState) {
-            when (it) {
-                0 -> All()
-                1 -> Favorite()
+
+            val screenType = when (it) {
+                0 -> ScreenType.ALL
+                else -> ScreenType.FAVORITE
             }
+
+            Destinations(screenType = screenType)
         }
     }
 }
@@ -80,12 +84,6 @@ private fun HomeTabMenu(
         }
     }
 }
-
-@Composable
-private fun Favorite() {
-
-}
-
 
 @Preview(showBackground = true)
 @Composable
