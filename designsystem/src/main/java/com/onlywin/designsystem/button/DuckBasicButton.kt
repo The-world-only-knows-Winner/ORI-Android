@@ -41,6 +41,7 @@ private fun DuckBasicButton(
     rippleEnabled: Boolean,
     isKeyboardShowed: Boolean,
     type: ButtonType,
+    isKeyboardMode: Boolean,
     onClick: () -> Unit,
 ) {
 
@@ -63,7 +64,7 @@ private fun DuckBasicButton(
     Box(
         modifier = modifier
             .padding(
-                horizontal = if (type == ButtonType.LARGE) padding
+                horizontal = if (type == ButtonType.LARGE && isKeyboardMode) padding
                 else 0.dp,
             )
             .clip(shape = RoundedCornerShape(shape))
@@ -91,6 +92,7 @@ fun DuckLargeButton(
     buttonColor: ButtonColor = DuckButtonColor.DefaultColor,
     enabled: Boolean = true,
     rippleEnabled: Boolean = true,
+    isKeyboardMode: Boolean = false,
     onClick: () -> Unit,
 ) {
     DuckBasicButton(
@@ -104,6 +106,7 @@ fun DuckLargeButton(
         rippleEnabled = rippleEnabled,
         isKeyboardShowed = isKeyboardShowed.value,
         type = ButtonType.LARGE,
+        isKeyboardMode = isKeyboardMode,
         onClick = onClick,
     )
 }
@@ -114,6 +117,7 @@ fun DuckSmallButton(
     buttonColor: ButtonColor = DuckButtonColor.DefaultColor,
     enabled: Boolean = true,
     rippleEnabled: Boolean = true,
+    isKeyboardMode: Boolean = false,
     onClick: () -> Unit,
 ) {
     DuckBasicButton(
@@ -127,6 +131,7 @@ fun DuckSmallButton(
         rippleEnabled = rippleEnabled,
         isKeyboardShowed = isKeyboardShowed.value,
         type = ButtonType.MEDIUM,
+        isKeyboardMode = isKeyboardMode,
         onClick = onClick,
     )
 }

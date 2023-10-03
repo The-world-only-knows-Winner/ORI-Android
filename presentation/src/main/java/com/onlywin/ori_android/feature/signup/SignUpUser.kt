@@ -79,6 +79,7 @@ internal fun SignUpUser(
             DuckLargeButton(
                 text = buttonText,
                 onClick = moveToNextStep,
+                isKeyboardMode = true,
             )
         }
     }
