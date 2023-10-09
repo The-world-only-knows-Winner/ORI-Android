@@ -5,4 +5,6 @@ interface AuthRepository {
         email: String,
         password: String,
     )
+
+    suspend fun sendAuthCode(email: String)
 }
