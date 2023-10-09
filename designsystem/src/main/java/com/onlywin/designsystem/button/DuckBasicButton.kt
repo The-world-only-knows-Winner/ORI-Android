@@ -1,5 +1,6 @@
 package com.onlywin.designsystem.button
 
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -56,9 +57,15 @@ private fun DuckBasicButton(
     )
 
     val shape by animateDpAsState(
-        targetValue = if (isKeyboardShowed) 0.dp
+        targetValue = if (isKeyboardShowed && isKeyboardMode) 0.dp
         else shapeSize,
         label = stringResource(id = R.string.animation_label_button_shape),
+    )
+
+    val backgroundColor by animateColorAsState(
+        targetValue = if (isPressed) buttonColor.pressedColor
+        else buttonColor.backgroundColor,
+        label = stringResource(id = R.string.animation_label_button_background),
     )
 
     Box(
@@ -74,7 +81,7 @@ private fun DuckBasicButton(
                 rippleEnabled = rippleEnabled,
                 interactionSource = interactionSource,
             )
-            .background(color = if (isPressed) buttonColor.pressedColor else buttonColor.backgroundColor),
+            .background(backgroundColor),
         contentAlignment = Alignment.Center,
     ) {
         Body1(

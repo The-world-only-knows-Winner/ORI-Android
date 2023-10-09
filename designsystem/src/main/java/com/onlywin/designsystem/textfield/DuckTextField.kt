@@ -43,7 +43,7 @@ fun DuckTextField(
     descriptionColor: Color = DuckTheme.colors.onBackground,
     value: String,
     @DrawableRes drawableRes: Int? = null,
-    isError: Boolean = false,
+    isError: Boolean? = null,
     isPassword: Boolean = false,
     onValueChange: (String) -> Unit,
     onIconClicked: (() -> Unit)? = null,
@@ -136,17 +136,20 @@ private fun FieldTitle(
 private fun FieldDescription(
     description: String?,
     descriptionColor: Color,
-    isError: Boolean,
+    isError: Boolean?,
 ) {
     Column {
-        AnimatedVisibility(isError) {
+        AnimatedVisibility(isError != null) {
             Row(
                 modifier = Modifier.padding(top = 12.dp),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Image(
-                    painter = painterResource(R.drawable.ic_failure),
-                    contentDescription = stringResource(id = R.string.content_description_icon_text_field_description),
+                    painter = painterResource(
+                        id = if (isError == true) R.drawable.ic_failure
+                        else R.drawable.ic_success,
+                    ),
+                    contentDescription = stringResource(R.string.content_description_icon_text_field_description),
                 )
                 Spacer(modifier = Modifier.width(4.dp))
                 Body3(
