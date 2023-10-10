@@ -24,6 +24,7 @@
     <string name="password_mismatch">잘못된 비밀번호에요.</string>
 
     <string name="email_sent">인증 메일이 발송되었어요.</string>
+    <string name="code_mismatch">잘못된 인증코드에요.</string>
 
     <!--content description-->
     <string name="content_description_image_splash">Splash Image</string>

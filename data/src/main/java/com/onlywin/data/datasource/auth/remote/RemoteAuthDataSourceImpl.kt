@@ -4,6 +4,7 @@ import com.onlywin.data.api.AuthApi
 import com.onlywin.data.model.auth.sendauthcode.SendAuthCodeRequest
 import com.onlywin.data.model.auth.signin.SignInRequest
 import com.onlywin.data.model.auth.signin.SignInResponse
+import com.onlywin.data.model.auth.verifyauthcode.VerifyAuthCodeRequest
 import com.onlywin.data.utils.ORIExceptionHandler
 
 class RemoteAuthDataSourceImpl(
@@ -18,5 +19,10 @@ class RemoteAuthDataSourceImpl(
     override suspend fun sendAuthCode(sendAuthCodeRequest: SendAuthCodeRequest) =
         ORIExceptionHandler<Unit>().httpRequest {
             authApi.sendAuthCode(sendAuthCodeRequest)
+        }.sendRequest()
+
+    override suspend fun verifyAuthCode(verifyAuthCodeRequest: VerifyAuthCodeRequest) =
+        ORIExceptionHandler<Unit>().httpRequest {
+            authApi.verifyCodeAuthCode(verifyAuthCodeRequest)
         }.sendRequest()
 }

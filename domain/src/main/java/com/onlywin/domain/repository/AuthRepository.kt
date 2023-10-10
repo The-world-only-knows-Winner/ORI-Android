@@ -7,4 +7,9 @@ interface AuthRepository {
     )
 
     suspend fun sendAuthCode(email: String)
+
+    suspend fun verifyAuthCode(
+        email: String,
+        code: String,
+    )
 }
