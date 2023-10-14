@@ -1,4 +1,4 @@
-package com.onlywin.data.model.signin
+package com.onlywin.data.model.auth.signin
 
 import com.google.gson.annotations.SerializedName
 

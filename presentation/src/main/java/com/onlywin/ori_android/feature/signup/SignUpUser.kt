@@ -8,22 +8,21 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.onlywin.designsystem.DuckTheme
 import com.onlywin.designsystem.button.DuckLargeButton
 import com.onlywin.designsystem.component.DuckLayout
 import com.onlywin.designsystem.header.DuckAuthHeader
 import com.onlywin.designsystem.textfield.DuckTextField
 import com.onlywin.ori_android.R
+import com.onlywin.ori_android.viewmodel.user.SignUpViewModel
+import org.koin.androidx.compose.koinViewModel
 
 private val pageTitles = listOf(
     R.string.sign_up_account_please_enter_name,
@@ -34,43 +33,40 @@ private val pageTitles = listOf(
 internal fun SignUpUser(
     moveToSignUpAccount: () -> Unit,
     moveToComplete: () -> Unit,
+    signUpViewModel: SignUpViewModel,
 ) {
+    val state by signUpViewModel.state.collectAsStateWithLifecycle()
 
-    var birth by remember { mutableStateOf("") }
-    val onBirthChange = { value: String ->
-        birth = value
-    }
-
-    var name by remember { mutableStateOf("") }
-    val onNameChange = { value: String ->
-        name = value
-    }
-
-    var currentStep by rememberSaveable { mutableIntStateOf(0) }
-
-    val moveToNextStep = {
-        when (currentStep) {
-            0 -> currentStep += 1
-            else -> moveToComplete()
-        }
-    }
+    val currentStep = state.currentStep
 
     val buttonText = when (currentStep) {
-        0 -> stringResource(id = R.string.next)
+        3 -> stringResource(id = R.string.next)
         else -> stringResource(id = R.string.complete)
+    }
+
+    LaunchedEffect(Unit) {
+        signUpViewModel.sideEffect.collect {
+            when (it) {
+                is SignUpSideEffect.Success -> {
+                    moveToComplete()
+                }
+
+                else -> {}
+            }
+        }
     }
 
     DuckLayout {
         Column(modifier = Modifier.padding(horizontal = 20.dp)) {
             DuckAuthHeader(
-                pageTitle = stringResource(id = pageTitles[currentStep]),
+                pageTitle = stringResource(id = pageTitles[currentStep - 3]),
                 leadingOnClick = moveToSignUpAccount,
             )
             SignUpUserInputs(
-                birth = birth,
-                onBirthChange = onBirthChange,
-                name = name,
-                onNameChange = onNameChange,
+                birth = state.birthDay,
+                onBirthChange = signUpViewModel::setBirth,
+                name = state.name,
+                onNameChange = signUpViewModel::setName,
                 currentStep = currentStep,
             )
         }
@@ -78,7 +74,7 @@ internal fun SignUpUser(
         Box(modifier = Modifier.imePadding()) {
             DuckLargeButton(
                 text = buttonText,
-                onClick = moveToNextStep,
+                onClick = signUpViewModel::onButtonClick,
                 isKeyboardMode = true,
             )
         }
@@ -94,7 +90,7 @@ private fun SignUpUserInputs(
     currentStep: Int,
 ) {
     Column {
-        AnimatedVisibility(currentStep >= 1) {
+        AnimatedVisibility(currentStep >= 4) {
             DuckTextField(
                 value = birth,
                 onValueChange = onBirthChange,
@@ -116,9 +112,11 @@ private fun SignUpUserInputs(
 @Composable
 private fun SignUpUserLightPreview() {
     DuckTheme {
-        SignUpUser(moveToSignUpAccount = { /*TODO*/ }) {
-
-        }
+        SignUpUser(
+            moveToSignUpAccount = { /*TODO*/ },
+            moveToComplete = { /*TODO*/ },
+            signUpViewModel = koinViewModel(),
+        )
     }
 }
 
@@ -130,8 +128,10 @@ private fun SignUpUserLightPreview() {
 @Composable
 private fun SignUpUserDarkPreview() {
     DuckTheme {
-        SignUpUser(moveToSignUpAccount = { /*TODO*/ }) {
-
-        }
+        SignUpUser(
+            moveToSignUpAccount = { /*TODO*/ },
+            moveToComplete = { /*TODO*/ },
+            signUpViewModel = koinViewModel(),
+        )
     }
 }

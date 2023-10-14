@@ -2,7 +2,9 @@ package com.onlywin.data.repository
 
 import com.onlywin.data.datasource.auth.local.LocalAuthDataSource
 import com.onlywin.data.datasource.auth.remote.RemoteAuthDataSource
-import com.onlywin.data.model.signin.SignInRequest
+import com.onlywin.data.model.auth.sendauthcode.SendAuthCodeRequest
+import com.onlywin.data.model.auth.signin.SignInRequest
+import com.onlywin.data.model.auth.verifyauthcode.VerifyAuthCodeRequest
 import com.onlywin.domain.repository.AuthRepository
 
 class AuthRepositoryImpl(
@@ -26,5 +28,21 @@ class AuthRepositoryImpl(
                 refreshExpiresAt = it.refreshExpiresAt,
             )
         }
+    }
+
+    override suspend fun sendAuthCode(email: String) {
+        remoteAuthDataSource.sendAuthCode(SendAuthCodeRequest(email))
+    }
+
+    override suspend fun verifyAuthCode(
+        email: String,
+        code: String,
+    ) {
+        remoteAuthDataSource.verifyAuthCode(
+            VerifyAuthCodeRequest(
+                email = email,
+                code = code,
+            )
+        )
     }
 }
