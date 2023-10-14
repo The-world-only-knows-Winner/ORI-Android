@@ -1,5 +1,6 @@
 package com.onlywin.data.utils
 
+import com.onlywin.domain.exception.BadRequestException
 import com.onlywin.domain.exception.ConflictException
 import com.onlywin.domain.exception.InternalServerException
 import com.onlywin.domain.exception.NotFoundException
@@ -20,6 +21,7 @@ class ORIExceptionHandler<T> {
         httpRequest()
     } catch (e: HttpException) {
         throw when (e.code()) {
+            400 -> BadRequestException()
             401 -> UnAuthorized()
             404 -> NotFoundException()
             409 -> ConflictException()
