@@ -1,5 +1,6 @@
 package com.onlywin.ori_android.navigation
 
+import androidx.compose.runtime.Composable
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
@@ -7,6 +8,11 @@ import com.onlywin.ori_android.feature.signin.SignIn
 import com.onlywin.ori_android.feature.signup.SignUpAccount
 import com.onlywin.ori_android.feature.signup.SignUpComplete
 import com.onlywin.ori_android.feature.signup.SignUpUser
+import com.onlywin.ori_android.viewmodel.user.SignUpViewModel
+import org.koin.androidx.compose.koinViewModel
+
+private val signUpViewModel: SignUpViewModel
+    @Composable get() = koinViewModel()
 
 internal fun NavGraphBuilder.authNavigation(
     moveToOnboarding: () -> Unit,
@@ -19,15 +25,14 @@ internal fun NavGraphBuilder.authNavigation(
         startDestination = NavigationRoute.Auth.SignIn,
     ) {
         composable(NavigationRoute.Auth.SignIn) {
-            SignIn(
-                moveToOnboarding = moveToOnboarding,
-            )
+            SignIn(moveToOnboarding = moveToOnboarding)
         }
 
         composable(NavigationRoute.Auth.SignUpAccount) {
             SignUpAccount(
                 moveToOnboarding = moveToOnboarding,
                 moveToSignUpUser = moveToSignUpUser,
+                signUpViewModel = signUpViewModel,
             )
         }
 
