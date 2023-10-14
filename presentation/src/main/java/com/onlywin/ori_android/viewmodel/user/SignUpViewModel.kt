@@ -22,7 +22,14 @@ class SignUpViewModel(
         when (state.value.currentStep) {
             0 -> sendAuthCode()
             1 -> verifyAuthCode()
-            else -> postSideEffect(SignUpSideEffect.MoveToSignUpUser)
+            2 -> {
+                postSideEffect(SignUpSideEffect.MoveToSignUpUser)
+                moveToNextStep(3)
+            }
+
+            3 -> moveToNextStep(4)
+            4 -> signUp()
+            else -> {}
         }
     }
 
@@ -44,9 +51,18 @@ class SignUpViewModel(
         setState(
             state.value.copy(
                 password = password,
-                passwordError = !Regex(Regexes.PASSWORD).matches(password),
+                passwordError = if (!Regex(Regexes.PASSWORD).matches(password)) true
+                else null,
             )
         )
+    }
+
+    internal fun setName(name: String) {
+        setState(state.value.copy(name = name))
+    }
+
+    internal fun setBirth(birth: String) {
+        setState(state.value.copy(birthDay = birth))
     }
 
     private fun moveToNextStep(currentStep: Int) {
@@ -78,6 +94,23 @@ class SignUpViewModel(
                     moveToNextStep(2)
                 }.onFailure {
                     if (it is BadRequestException) setState(copy(codeError = true))
+                }
+            }
+        }
+    }
+
+    private fun signUp() {
+        viewModelScope.launch(Dispatchers.IO) {
+            with(state.value) {
+                signUpUseCase(
+                    email = email,
+                    password = password,
+                    name = name,
+                    birthday = birthDay,
+                ).onSuccess {
+                    postSideEffect(SignUpSideEffect.Success)
+                }.onFailure {
+
                 }
             }
         }

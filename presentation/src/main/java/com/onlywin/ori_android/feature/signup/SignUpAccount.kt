@@ -30,6 +30,7 @@ private val pageTitles = listOf(
     R.string.sign_up_account_please_enter_email,
     R.string.sign_up_account_please_enter_email,
     R.string.sign_up_account_please_enter_password,
+    R.string.sign_up_account_please_enter_name,
 )
 
 @Composable

@@ -11,24 +11,26 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.onlywin.designsystem.DuckTheme
 import com.onlywin.designsystem.button.DuckLargeButton
 import com.onlywin.designsystem.component.DuckLayout
 import com.onlywin.designsystem.fondation.typography.Heading1
 import com.onlywin.ori_android.R
+import com.onlywin.ori_android.viewmodel.user.SignUpViewModel
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
-internal fun SignUpComplete() {
-
-    val name by remember { mutableStateOf("") }
+internal fun SignUpComplete(
+    signUpViewModel: SignUpViewModel,
+) {
+    val state by signUpViewModel.state.collectAsStateWithLifecycle()
 
     DuckLayout {
         Box(
@@ -52,7 +54,7 @@ internal fun SignUpComplete() {
                 )
                 Spacer(modifier = Modifier.height(16.dp))
                 Heading1(text = stringResource(id = R.string.sign_up_complete_welcome))
-                Heading1(text = name)
+                Heading1(text = "${state.name}님!")
             }
             Column(modifier = Modifier.padding(horizontal = 20.dp)) {
                 DuckLargeButton(
@@ -72,7 +74,7 @@ internal fun SignUpComplete() {
 @Composable
 private fun CompleteLightPreview() {
     DuckTheme {
-        SignUpComplete()
+        SignUpComplete(signUpViewModel = koinViewModel())
     }
 }
 
@@ -84,6 +86,6 @@ private fun CompleteLightPreview() {
 @Composable
 private fun CompleteDarkPreview() {
     DuckTheme {
-        SignUpComplete()
+        SignUpComplete(signUpViewModel = koinViewModel())
     }
 }
