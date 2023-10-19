@@ -10,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object ApiProvider {
 
     fun getHttpLoggingInterceptor() = HttpLoggingInterceptor().setLevel(
-        HttpLoggingInterceptor.Level.BODY
+        HttpLoggingInterceptor.Level.BODY,
     )
 
     fun getOkHttpClient(
@@ -22,7 +22,7 @@ object ApiProvider {
     private fun getRetrofit(
         interceptor: ORIInterceptor,
     ): Retrofit = Retrofit.Builder()
-        .baseUrl("https://jeongho.dev")
+        .baseUrl("http://3.36.252.45")
         .client(
             getOkHttpClient(
                 httpLoginInterceptor = getHttpLoggingInterceptor(),
